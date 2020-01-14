@@ -4,7 +4,7 @@ from datetime import datetime
 from config.app import LOGGING
 from models.Driver import start_driver, get_scroll_height
 from models.Screenshot import Screenshot
-from services.utils import now, time_elapsed
+from services.Time import now, time_elapsed
 
 # TODO: Flag sites that have a scroll height of over 10000 or 15000 (arbitrary)
 # TODO: On site screenshot, record time elapsed, scroll height, flag status, screenshot path, sitename, url, etc.
