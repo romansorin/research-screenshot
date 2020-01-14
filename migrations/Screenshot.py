@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship, backref
 import enum
-
 from config.database import Base
 
 
