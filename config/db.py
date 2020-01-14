@@ -1,4 +1,4 @@
-from sqlalchemy import (create_engine, Column, Enum,  ForeignKey, Boolean, Integer, String)
+from sqlalchemy import (create_engine, Column, Enum, ForeignKey, Integer, String)
 from sqlalchemy.orm.session import sessionmaker
 from sqlalchemy.orm import relationship, backref
 import os
@@ -21,30 +21,6 @@ def migrate():
 def drop():
     Base.metadata.drop_all(engine)
     print("Dropped tables")
-
-
-class ScreenshotEnum(enum.Enum):
-    RGB = "RGB"
-    GREYSCALE = "GREYSCALE"
-
-# Models
-class Site(Base):
-    __tablename__ = 'sites'
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    url = Column(String)
-    children = relationship('Screenshot', backref='site', cascade='all,delete')
-
-
-class Screenshot(Base):
-    __tablename__ = 'screenshots'
-
-    id = Column(Integer, primary_key=True)
-    site_id = Column(Integer, ForeignKey('sites.id', ondelete='CASCADE'))
-    path = Column(String)
-    type = Column(Enum(ScreenshotEnum))
-    parent = relationship(Site, backref=backref('screenshot', cascade='all,delete', passive_deletes=True))
 
 
 # session.add(Site(name='romansorin', host='https://romansorin.com'))

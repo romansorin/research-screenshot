@@ -24,5 +24,3 @@ def start_driver():
     )
     driver.implicitly_wait(60)
     return driver
-
-

@@ -1,5 +1,5 @@
 from .sites import sites
-from .config import start_driver, LOGGING
+from config.config import start_driver, LOGGING
 import time
 from datetime import datetime
 
@@ -7,6 +7,7 @@ SCROLL_PAUSE_TIME = 5
 MAX_SCROLL_HEIGHT = 100000
 RESCROLL_PAUSE_TIME = 0.5
 RESCROLL_INCREMENTS = 200
+
 
 # TODO: Flag sites that have a scroll height of over 10000 or 15000 (arbitrary)
 # TODO: On site screenshot, record time elapsed, scroll height, flag status, screenshot path, sitename, url, etc.
