@@ -19,3 +19,8 @@ def configure_webdriver():
     options.add_argument("--height=1440")
 
     return f'executable_path={geckodriver}, options={options}, firefox_profile={profile}, log_path={log}'
+
+SCROLL_PAUSE_TIME = 5
+MAX_SCROLL_HEIGHT = 100000
+RESCROLL_PAUSE_TIME = 0.5
+RESCROLL_INCREMENTS = 200
