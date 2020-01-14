@@ -16,8 +16,18 @@ convert_all()
 import cv2
 import os
 
-SCREENSHOT_ROOT_PATH = 'screenshots'
-SCREENSHOT_ORIGINAL_PATH = f'{SCREENSHOT_ROOT_PATH}/original'
-SCREENSHOT_GREY_PATH = f'{SCREENSHOT_ROOT_PATH}/greyscale'
 
 
+# session.add(Site(name='romansorin', host='https://romansorin.com'))
+# session.add(Site(name='2', host='https://2.com'))
+# session.add(Screenshot(site_id=1, path='test', type=ScreenshotEnum['RGB']))
+# session.add(Screenshot(site_id=1, path='test', type=ScreenshotEnum['RGB']))
+#
+# session.add(Screenshot(site_id=2, path='s', type=ScreenshotEnum['GREYSCALE']))
+# session.add(Screenshot(site_id=2, path='a', type=ScreenshotEnum['GREYSCALE']))
+# session.add(Screenshot(site_id=2, path='s', type=ScreenshotEnum['GREYSCALE']))
+# print(ScreenshotEnum.GREYSCALE)
+# session.add(Screenshot(site_id=1))
+# site = session.query(Site).filter(Site.id == 1).first()
+# session.delete(site)
+# session.commit()

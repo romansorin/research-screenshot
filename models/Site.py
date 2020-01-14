@@ -1,4 +1,4 @@
-from config.db import session, Site
+from config.database import session, Site
 
 sites = [
     {"name": "airbnb", "url": "https://www.airbnb.com"},

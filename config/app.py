@@ -17,6 +17,10 @@ options.headless = True
 options.add_argument("--width=2560")
 options.add_argument("--height=1440")
 
+SCREENSHOT_ROOT_PATH = 'screenshots'
+SCREENSHOT_ORIGINAL_PATH = f'{SCREENSHOT_ROOT_PATH}/original'
+SCREENSHOT_GREY_PATH = f'{SCREENSHOT_ROOT_PATH}/greyscale'
+
 
 def start_driver():
     driver = webdriver.Firefox(
