@@ -3,6 +3,7 @@ import enum
 import cv2
 
 from config.app import SCREENSHOT_ORIGINAL_PATH, SCREENSHOT_GREY_PATH
+from config.database import session
 
 
 class ScreenshotEnum(enum.Enum):
@@ -11,12 +12,11 @@ class ScreenshotEnum(enum.Enum):
 
 
 class Screenshot:
-
-    def __init__(self, site_id, path, filename, type):
-        self.site_id = ''
-        self.path = ''
-        self.filename = ''
-        self.type = ''
+    def __init__(self, site_id, path, filename, screenshot_type):
+        self.site_id = site_id
+        self.path = path
+        self.filename = filename
+        self.type = screenshot_type
 
     def to_greyscale(self, filename):
         image = cv2.imread(f'{SCREENSHOT_ORIGINAL_PATH}/{filename}')
@@ -25,19 +25,22 @@ class Screenshot:
 
         self.type = ScreenshotEnum.GREYSCALE
         self.path = f'{SCREENSHOT_GREY_PATH}/{filename}'
+        session.commit()
         return status
+
+    def store(self, data):
+        screenshot = Screenshot(**data)
+        session.add(screenshot)
+        session.commit()
+
+    def destroy(self, id):
+        screenshot = session.query(Screenshot).filter(
+            Screenshot.id == id).first()
+        session.delete(screenshot)
+        session.commit()
 
 # for file in os.listdir('screenshots'):
 #     if file.endswith('.png')
 
 
-# session.add(Screenshot(site_id=1, path='test', type=ScreenshotEnum['RGB']))
-# session.add(Screenshot(site_id=1, path='test', type=ScreenshotEnum['RGB']))
-#
-# session.add(Screenshot(site_id=2, path='s', type=ScreenshotEnum['GREYSCALE']))
-# session.add(Screenshot(site_id=2, path='a', type=ScreenshotEnum['GREYSCALE']))
-# session.add(Screenshot(site_id=2, path='s', type=ScreenshotEnum['GREYSCALE']))
-# print(ScreenshotEnum.GREYSCALE)
-# session.add(Screenshot(site_id=1))
-
-# session.commit()
+print("test")

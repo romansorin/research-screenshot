@@ -3,6 +3,7 @@ from datetime import datetime
 
 from config.app import LOGGING
 from models.Driver import start_driver
+from models.Screenshot import Screenshot
 
 SCROLL_PAUSE_TIME = 5
 MAX_SCROLL_HEIGHT = 100000
@@ -43,7 +44,8 @@ def scroll_to(height):
 
 def scroll(height):
     while True:
-        if LOGGING: print(f"Scrolling to height {height}")
+        if LOGGING:
+            print(f"Scrolling to height {height}")
         scroll_to("document.body.scrollHeight")
         time.sleep(SCROLL_PAUSE_TIME)
 
@@ -60,17 +62,20 @@ def rescroll(height):
     current_scroll = 0
 
     while current_scroll < height:
-        if LOGGING: print(f"Rescrolling page to {current_scroll}")
+        if LOGGING:
+            print(f"Rescrolling page to {current_scroll}")
         scroll_to(current_scroll)
         time.sleep(RESCROLL_PAUSE_TIME)
         current_scroll += RESCROLL_INCREMENTS
 
 
 def screenshot(filename, height):
-    if LOGGING: print(get_window_height())
+    if LOGGING:
+        print(get_window_height())
     set_window_height(height + 150)
     driver.set_window_position(0, 0)
-    if LOGGING: print(get_window_height())
+    if LOGGING:
+        print(get_window_height())
 
     scroll_to("document.body.scrollHeight")
     path = f"./screenshots/{filename}.png"
@@ -79,11 +84,14 @@ def screenshot(filename, height):
     except:
         print("Something went wrong when trying to take the screenshot.")
     finally:
-        if LOGGING: print(f"Finished site {filename} in {time_elapsed(start_time, datetime.now())}")
+        if LOGGING:
+            print(
+                f"Finished site {filename} in {time_elapsed(start_time, datetime.now())}")
 
 
 def setup(name, url):
-    if LOGGING: print(f"Beginning site: {name}")
+    if LOGGING:
+        print(f"Beginning site: {name}")
 
     set_window_height()
     driver.get(url)
@@ -94,10 +102,10 @@ def setup(name, url):
 if __name__ == "__main__":
     driver = start_driver()
 
-    for site in sites:
-        start_time, last_height = setup(site["name"], site["url"])
-        last_height = scroll(last_height)
-        rescroll(last_height)
-        screenshot(site["name"], last_height)
-
+    # for site in sites:
+    #     start_time, last_height = setup(site["name"], site["url"])
+    #     last_height = scroll(last_height)
+    #     rescroll(last_height)
+    #     screenshot(site["name"], last_height)
+    Screenshot.store()
     driver.quit()
