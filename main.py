@@ -1,5 +1,4 @@
-from .sites import sites
-from config.config import start_driver, LOGGING
+from config.app import start_driver, LOGGING
 import time
 from datetime import datetime
 

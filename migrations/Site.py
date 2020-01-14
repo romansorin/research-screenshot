@@ -5,7 +5,6 @@ import os
 import enum
 from sqlalchemy.ext.declarative import declarative_base
 
-DB = os.path.join(os.path.dirname(__file__), 'screenshots.sqlite3')
 conn_string = f'sqlite:///{DB}'
 engine = create_engine(conn_string)
 Base = declarative_base()

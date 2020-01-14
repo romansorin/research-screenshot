@@ -1,11 +1,3 @@
-import cv2
-import os
-
-SCREENSHOT_ROOT_PATH = 'screenshots'
-SCREENSHOT_ORIGINAL_PATH = f'{SCREENSHOT_ROOT_PATH}/original'
-SCREENSHOT_GREY_PATH = f'{SCREENSHOT_ROOT_PATH}/greyscale'
-
-
 def convert_to_greyscale(filename):
     print("Reading: ", filename)
     image = cv2.imread(f'{SCREENSHOT_ORIGINAL_PATH}/{filename}')
@@ -21,3 +13,11 @@ def convert_all():
 
 
 convert_all()
+import cv2
+import os
+
+SCREENSHOT_ROOT_PATH = 'screenshots'
+SCREENSHOT_ORIGINAL_PATH = f'{SCREENSHOT_ROOT_PATH}/original'
+SCREENSHOT_GREY_PATH = f'{SCREENSHOT_ROOT_PATH}/greyscale'
+
+

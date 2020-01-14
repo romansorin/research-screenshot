@@ -12,6 +12,8 @@ Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
 
+DB = os.path.join(os.path.dirname(__file__), 'screenshots.sqlite3')
+
 
 def migrate():
     Base.metadata.create_all(engine)
