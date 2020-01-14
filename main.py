@@ -1,6 +1,8 @@
-from config.app import start_driver, LOGGING
 import time
 from datetime import datetime
+
+from config.app import LOGGING
+from models.Driver import start_driver
 
 SCROLL_PAUSE_TIME = 5
 MAX_SCROLL_HEIGHT = 100000

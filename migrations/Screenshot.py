@@ -1,13 +1,9 @@
+
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship, backref
-import enum
+
 from config.database import Base
-
-
-class ScreenshotEnum(enum.Enum):
-    RGB = "RGB"
-    GREYSCALE = "GREYSCALE"
-
+from models.Screenshot import ScreenshotEnum
 
 class Screenshot(Base):
     __tablename__ = 'screenshots'

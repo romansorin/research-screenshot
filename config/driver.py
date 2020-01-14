@@ -1,15 +1,13 @@
-from selenium import webdriver
 import platform
+
+from selenium import webdriver
 
 
 ###########################
 # Webdriver configuration #
 ###########################
 def configure_webdriver():
-    if platform.system() == 'Windows':
-        geckodriver = "./drivers/geckodriver.exe"
-    else:
-        geckodriver = "./drivers/geckodriver"
+    geckodriver = "./drivers/geckodriver.exe" if platform.system() == 'Windows' else geckodriver = "./drivers/geckodriver"
 
     profile = webdriver.FirefoxProfile("./profile")
     log = './drivers/geckodriver.log'

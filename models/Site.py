@@ -1,4 +1,4 @@
-from config.database import session, Site
+from config.database import session
 
 sites = [
     {"name": "airbnb", "url": "https://www.airbnb.com"},
@@ -41,3 +41,8 @@ def add_sites_to_db():
     for site in sites:
         session.add(Site(name=site['name'], url=site['url']))
         session.commit()
+
+# session.add(Site(name='romansorin', host='https://romansorin.com'))
+# session.add(Site(name='2', host='https://2.com'))
+# site = session.query(Site).filter(Site.id == 1).first()
+# session.delete(site)

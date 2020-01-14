@@ -1,7 +1,8 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm.session import sessionmaker
 import os
+
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm.session import sessionmaker
 
 database_name = 'screenshots'
 database = os.path.join(os.path.dirname(__file__), f"{database_name}.sqlite3")
@@ -18,9 +19,6 @@ Base = declarative_base()
 session, engine = _setup()
 
 
-###########
-# Methods #
-###########
 def migrate():
     Base.metadata.create_all(engine)
     print("Migrated tables")
