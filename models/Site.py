@@ -1,5 +1,3 @@
-from config.database import session
-
 sites = [
     {"name": "airbnb", "url": "https://www.airbnb.com"},
     {"name": "lewagon", "url": "https://www.lewagon.com"},
@@ -36,11 +34,16 @@ sites = [
     {"name": "lobe", "url": "https://lobe.ai"},
 ]
 
+# TODO: Define methods for getting associated screenshots
+class Site:
+    def __init__(self, name, host):
+        self.name = name
+        self.host = host
 
-def add_sites_to_db():
-    for site in sites:
-        session.add(Site(name=site['name'], url=site['url']))
-        session.commit()
+# def add_sites_to_db():
+#     for site in sites:
+#         session.add(Site(name=site['name'], url=site['url']))
+#         session.commit()
 
 # session.add(Site(name='romansorin', host='https://romansorin.com'))
 # session.add(Site(name='2', host='https://2.com'))
