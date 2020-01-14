@@ -2,6 +2,8 @@ import platform
 import os
 from selenium import webdriver
 
+
+# TODO: Get paths/file referencing working for geckodriver executables, logs, profile, etc.
 ###########################
 # Webdriver configuration #
 ###########################

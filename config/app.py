@@ -1,5 +1,6 @@
 LOGGING = True
 
+# TODO: Change these path references and test
 #############################
 # Screenshots configuration #
 #############################
