@@ -12,7 +12,7 @@ class ScreenshotEnum(enum.Enum):
 
 class Screenshot:
 
-    def __init__(self):
+    def __init__(self, site_id, path, filename, type):
         self.site_id = ''
         self.path = ''
         self.filename = ''
