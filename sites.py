@@ -1,4 +1,4 @@
-from .db import session, Site
+from db import session, Site
 sites = [
     {"name": "airbnb", "url": "https://www.airbnb.com"},
     {"name": "lewagon", "url": "https://www.lewagon.com"},
@@ -35,5 +35,8 @@ sites = [
     {"name": "lobe", "url": "https://lobe.ai"},
 ]
 
-for site in sites:
-    session.add(Site(name=site['name'], url=site['url']))
+
+def add_sites_to_db():
+    for site in sites:
+        session.add(Site(name=site['name'], url=site['url']))
+        session.commit()

@@ -1,4 +1,4 @@
-from screenshot.sites import sites
+from .sites import sites
 from .config import start_driver, LOGGING
 import time
 from datetime import datetime
@@ -13,6 +13,7 @@ RESCROLL_INCREMENTS = 200
 # TODO: Possibly check amt of white space in screenshot?
 # TODO: Possibly switch to regular screenshot method instead of height extension if scroll height > 50000 or flag?
 # TODO: Add SQLite DB and tables for sites, associated data, file paths, etc.
+
 
 def now():
     return datetime.now()
@@ -90,11 +91,11 @@ def setup(name, url):
 
 if __name__ == "__main__":
     driver = start_driver()
-    print("fuck you")
-    # for site in sites:
-    #     start_time, last_height = setup(site["name"], site["url"])
-    #     last_height = scroll(last_height)
-    #     rescroll(last_height)
-    #     screenshot(site["name"], last_height)
+
+    for site in sites:
+        start_time, last_height = setup(site["name"], site["url"])
+        last_height = scroll(last_height)
+        rescroll(last_height)
+        screenshot(site["name"], last_height)
 
     driver.quit()

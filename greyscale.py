@@ -1,5 +1,3 @@
-__package__ = "screenshot"
-
 import cv2
 import os
 
