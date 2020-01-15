@@ -1,15 +1,34 @@
+import os
+import platform
 import time
+
+from selenium import webdriver
 
 import services.Time as Time
 from config.app import SCREENSHOT_ROOT_PATH
-from config.driver import SCROLL_PAUSE_TIME, MAX_SCROLL_HEIGHT, RESCROLL_INCREMENTS, RESCROLL_PAUSE_TIME
-from config.driver import webdriver, configure_webdriver
+from config.driver import *
 
 
 class Driver:
     def __init__(self):
-        self.driver = webdriver.Firefox(**configure_webdriver())
+        self.driver = webdriver.Firefox(**self.__boot())
         self.driver.implicitly_wait(60)
+
+    def __boot(self):
+        geckodriver = os.path.join('./drivers/',
+                                   'geckodriver.exe') if platform.system() == 'Windows' else os.path.join(
+            './drivers/', 'geckodriver')
+
+        profile = webdriver.FirefoxProfile(os.path.join('./drivers/profile'))
+        log = os.path.join('./drivers/', 'geckodriver.log')
+
+        options = webdriver.FirefoxOptions()
+        options.headless = True
+        options.add_argument("--width=2560")
+        options.add_argument("--height=1440")
+
+        return {'executable_path': geckodriver, 'options': options, 'firefox_profile': profile,
+                'log_path': log}
 
     def get_scroll_height(self):
         return self.driver.execute_script("return document.body.scrollHeight")

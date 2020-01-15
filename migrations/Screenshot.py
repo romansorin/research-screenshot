@@ -2,7 +2,7 @@
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship, backref
 
-from config.database import Base
+from models.Database import Base
 from models.Screenshot import ScreenshotEnum
 
 class Screenshot(Base):
