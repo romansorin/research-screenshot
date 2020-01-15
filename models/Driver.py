@@ -70,7 +70,6 @@ class Driver:
             current_scroll += RESCROLL_INCREMENTS
 
     def screenshot(self, filename, start_time, height):
-
         print(self.get_window_height())
         self.set_window_height(height + 150)
         self.driver.set_window_position(0, 0)

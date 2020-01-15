@@ -1,4 +1,5 @@
 if __name__ == "__main__":
+    pass
     # driver = Driver()
     # for site in sites:
     #     start_time, last_height = setup(site["name"], site["url"])
