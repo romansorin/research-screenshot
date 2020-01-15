@@ -4,7 +4,6 @@ import platform
 from selenium import webdriver
 
 
-# TODO: Get paths/file referencing working for geckodriver executables, logs, profile, etc.
 ###########################
 # Webdriver configuration #
 ###########################
@@ -20,12 +19,8 @@ def configure_webdriver():
     options.add_argument("--width=2560")
     options.add_argument("--height=1440")
 
-    executable_path = geckodriver
-    options = options
-    firefox_profile = profile
-    log_path = log
-    return {'executable_path': executable_path, 'options': options, 'firefox_profile': firefox_profile,
-            'log_path': log_path}
+    return {'executable_path': geckodriver, 'options': options, 'firefox_profile': profile,
+            'log_path': log}
 
 SCROLL_PAUSE_TIME = 5
 MAX_SCROLL_HEIGHT = 100000
