@@ -1,10 +1,11 @@
-
-from config.database import conn_string
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.session import sessionmaker
 
+from config.database import conn_string
+
 Base = declarative_base()
+
 
 class Database:
     def __init__(self):
@@ -12,7 +13,6 @@ class Database:
         Session = sessionmaker(bind=eng)
         self.session = Session()
         self.engine = eng
-
 
     def migrate(self):
         Base.metadata.create_all(self.engine)
