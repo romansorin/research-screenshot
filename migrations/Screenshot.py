@@ -1,10 +1,10 @@
-
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
 
-from models.Database import Base
 from models.Screenshot import ScreenshotEnum
 
+from models.Base import Base
 class Screenshot(Base):
     __tablename__ = 'screenshots'
 

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
-from models.Database import Base
+from models.Base import Base
 
 
 class Site(Base):

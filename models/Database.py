@@ -1,26 +1,28 @@
+from sqlalchemy import Column, Integer, String
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.session import sessionmaker
-
+from models.Base import Base
 from config.database import conn_string
 
-Base = declarative_base()
+from migrations.Screenshot import Screenshot
+from migrations.Site import Site
+
+engine = create_engine(conn_string)
+Session = sessionmaker(bind=engine)
 
 
 class Database:
     def __init__(self):
-        eng = create_engine(conn_string)
-        Session = sessionmaker(bind=eng)
-        self.session = Session()
-        self.engine = eng
+        self.migrations = [Screenshot, Site]
+        pass
 
-    def migrate(self):
-        Base.metadata.create_all(self.engine)
+    @classmethod
+    def migrate(cls):
+        Base.metadata.create_all(engine)
         print("Migrated tables")
 
-    def drop(self):
-        Base.metadata.drop_all(self.engine)
+    @classmethod
+    def drop(cls):
+        Base.metadata.drop_all(engine)
         print("Dropped tables")
-
-    def get_session(self):
-        return self.session
