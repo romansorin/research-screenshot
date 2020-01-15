@@ -1,3 +1,5 @@
+from models.Database import Database
+
 sites = [
     {"name": "airbnb", "url": "https://www.airbnb.com"},
     {"name": "lewagon", "url": "https://www.lewagon.com"},
@@ -40,12 +42,6 @@ class Site:
         self.name = name
         self.host = host
 
-# def add_sites_to_db():
-#     for site in sites:
-#         session.add(Site(name=site['name'], url=site['url']))
-#         session.commit()
-
-# session.add(Site(name='romansorin', host='https://romansorin.com'))
-# session.add(Site(name='2', host='https://2.com'))
-# site = session.query(Site).filter(Site.id == 1).first()
-# session.delete(site)
+    def get_all_sites(self):
+        session = Database.get_session()
+        return session.query(Site).all()
