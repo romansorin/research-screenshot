@@ -3,6 +3,7 @@ import time
 import services.Time as Time
 from config.driver import SCROLL_PAUSE_TIME, MAX_SCROLL_HEIGHT, RESCROLL_INCREMENTS, RESCROLL_PAUSE_TIME
 from config.driver import webdriver, configure_webdriver
+from config.app import SCREENSHOT_ROOT_PATH
 
 
 # TODO: Check that driver is correctly initialized and that configuration variables are valid
@@ -60,7 +61,7 @@ class Driver:
         print(self.get_window_height())
 
         self.scroll_to("document.body.scrollHeight")
-        path = f"./screenshots/{filename}.png"
+        path = f"{SCREENSHOT_ROOT_PATH}/{filename}.png"
         try:
             self.driver.find_element_by_tag_name("body").screenshot(path)
         except Exception as e:
