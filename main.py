@@ -1,11 +1,5 @@
-import time
-from datetime import datetime
-
-from config.app import LOGGING
-from models.Driver import start_driver, get_scroll_height
-from models.Screenshot import Screenshot
-from services.Time import now, time_elapsed
-
+from models.Driver import Driver
+import services.Time as Time
 # TODO: Flag sites that have a scroll height of over 10000 or 15000 (arbitrary)
 # TODO: On site screenshot, record time elapsed, scroll height, flag status, screenshot path, sitename, url, etc.
 # TODO: Possibly check amt of white space in screenshot?
@@ -16,11 +10,11 @@ from services.Time import now, time_elapsed
 
 
 if __name__ == "__main__":
-    driver = start_driver()
-
+    # driver = Driver()
+    print(Time.now())
     # for site in sites:
     #     start_time, last_height = setup(site["name"], site["url"])
     #     last_height = scroll(last_height)
     #     rescroll(last_height)
-    #     screenshot(site["name"], last_height)
-    driver.quit()
+    #     screenshot(site["name"], start_time, last_height)
+    # driver.quit()

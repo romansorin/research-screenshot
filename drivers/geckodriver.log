@@ -1204,3 +1204,45 @@ JavaScript warning: https://b.stripecdn.com/site-srv/assets/compiled/js/sprocket
 JavaScript error: https://b.stripecdn.com/site-srv/assets/compiled/js/sprockets-js-v3/atlas_v2/index-e769c4296eee5967477d.min.js, line 1: TypeError: t is null
 JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
 1578706538924	Marionette	INFO	Stopped listening on port 49249
+1579106088832	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "/var/folders/tq/lh44x2n97cv4kkgrtpp5pndr0000gn/T/rust_mozprofile2vUAMB"
+*** You are running in headless mode.
+*** You are running in headless mode.
+1579106091688	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1579106091688	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1579106091688	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1579106091688	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1579106091748	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1579106093358	Marionette	INFO	Listening on port 60060
+1579106521885	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "/var/folders/tq/lh44x2n97cv4kkgrtpp5pndr0000gn/T/rust_mozprofile7e5hkw"
+*** You are running in headless mode.
+1579106522253	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1579106522253	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1579106522253	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1579106522253	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1579106522312	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1579106523596	Marionette	INFO	Listening on port 60642
+1579106523635	Marionette	WARN	TLS certificate errors will be ignored for this session
+1579106549458	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "/var/folders/tq/lh44x2n97cv4kkgrtpp5pndr0000gn/T/rust_mozprofilej16vkF"
+*** You are running in headless mode.
+1579106549763	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1579106549764	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1579106549764	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1579106549764	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1579106549814	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1579106550981	Marionette	INFO	Listening on port 60681
+1579106550995	Marionette	WARN	TLS certificate errors will be ignored for this session
+1579106551027	Marionette	INFO	Stopped listening on port 60681
+1579106573090	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "/var/folders/tq/lh44x2n97cv4kkgrtpp5pndr0000gn/T/rust_mozprofileK1QFnV"
+*** You are running in headless mode.
+1579106573413	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1579106573413	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1579106573413	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1579106573413	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1579106573469	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1579106574622	Marionette	INFO	Listening on port 60720
+1579106574719	Marionette	WARN	TLS certificate errors will be ignored for this session
+1579106574753	Marionette	INFO	Stopped listening on port 60720
