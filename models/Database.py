@@ -21,3 +21,6 @@ class Database:
     def drop(self):
         Base.metadata.drop_all(self.engine)
         print("Dropped tables")
+
+    def get_session(self):
+        return self.session
