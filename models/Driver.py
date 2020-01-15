@@ -1,12 +1,10 @@
 import time
 
 import services.Time as Time
+from config.app import SCREENSHOT_ROOT_PATH
 from config.driver import SCROLL_PAUSE_TIME, MAX_SCROLL_HEIGHT, RESCROLL_INCREMENTS, RESCROLL_PAUSE_TIME
 from config.driver import webdriver, configure_webdriver
-from config.app import SCREENSHOT_ROOT_PATH
 
-
-# TODO: Check that driver is correctly initialized and that configuration variables are valid
 
 class Driver:
     def __init__(self):
@@ -71,7 +69,6 @@ class Driver:
             print(f"Finished site {filename} in {Time.time_elapsed(start_time, Time.now())}")
 
     def setup(self, name, url):
-
         print(f"Beginning site: {name}")
 
         self.set_window_height()
