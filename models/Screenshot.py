@@ -2,7 +2,7 @@ import enum
 
 import cv2
 
-from config.app import SCREENSHOT_ORIGINAL_PATH, SCREENSHOT_GREY_PATH
+from config.app import SCREENSHOT_RGB_PATH, SCREENSHOT_GREY_PATH
 
 
 # TODO: Check that inputs are working and model is successfully used in DB
@@ -21,7 +21,7 @@ class Screenshot:
 
     # TODO: Save greyscale image to database
     def to_greyscale(self, filename):
-        image = cv2.imread(f'{SCREENSHOT_ORIGINAL_PATH}/{filename}')
+        image = cv2.imread(f'{SCREENSHOT_RGB_PATH}/{filename}')
         grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         status = cv2.imwrite(f'{SCREENSHOT_GREY_PATH}/{filename}', grey)
 
