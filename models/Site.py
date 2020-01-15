@@ -1,3 +1,4 @@
+from migrations.Site import Site as SiteDef
 from models.Database import Database
 
 sites = [
@@ -36,7 +37,7 @@ sites = [
     {"name": "lobe", "url": "https://lobe.ai"},
 ]
 
-# TODO: Define methods for getting associated screenshots
+
 class Site:
     def __init__(self, name, host):
         self.name = name
@@ -44,4 +45,4 @@ class Site:
 
     def get_all_sites(self):
         session = Database.get_session()
-        return session.query(Site).all()
+        return session.query(SiteDef).all()
