@@ -7,6 +7,7 @@ from config.database import conn_string
 
 from migrations.Screenshot import Screenshot
 from migrations.Site import Site
+from migrations.Response import Response
 
 engine = create_engine(conn_string)
 Session = sessionmaker(bind=engine)
@@ -14,7 +15,7 @@ Session = sessionmaker(bind=engine)
 
 class Database:
     def __init__(self):
-        self.migrations = [Screenshot, Site]
+        self.migrations = [Screenshot, Site, Response]
         pass
 
     @classmethod
