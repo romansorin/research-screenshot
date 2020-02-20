@@ -2,28 +2,33 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm.session import sessionmaker
-from models.Base import Base
 from config.database import conn_string
 
 from migrations.Screenshot import Screenshot
 from migrations.Site import Site
-from migrations.Response import Response
+
 
 engine = create_engine(conn_string)
 Session = sessionmaker(bind=engine)
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
-class Database:
-    def __init__(self):
-        self.migrations = [Screenshot, Site, Response]
-        pass
+class Response(Base):
+    __tablename__ = 'responses'
 
-    @classmethod
-    def migrate(cls):
-        Base.metadata.create_all(engine)
-        print("Migrated tables")
+    id = Column(Integer, primary_key=True)
+    content = Column(Integer, nullable=False)
 
-    @classmethod
-    def drop(cls):
-        Base.metadata.drop_all(engine)
-        print("Dropped tables")
+
+Base.metadata.create_all(engine)
+
+
+def migrate():
+    print("Migrated tables")
+
+
+def drop():
+    Base.metadata.drop_all(engine)
+    print("Dropped tables")

@@ -1,5 +1,4 @@
 from migrations.Site import Site as SiteDef
-from models.Database import Database
 
 sites = [
     {"name": "airbnb", "url": "https://www.airbnb.com"},
@@ -43,6 +42,6 @@ class Site:
         self.name = name
         self.host = host
 
-    def get_all_sites(self):
-        session = Database.get_session()
-        return session.query(SiteDef).all()
+    # def get_all_sites(self):
+    #     session = Database.get_session()
+    #     return session.query(SiteDef).all()

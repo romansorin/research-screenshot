@@ -1,7 +1,7 @@
 import enum
 
-import cv2
-
+# import cv2
+#
 from config.app import SCREENSHOT_RGB_PATH, SCREENSHOT_GREY_PATH
 
 # TODO: Flag sites that have a scroll height of over 10000 or 15000 (arbitrary)
@@ -26,10 +26,10 @@ class Screenshot:
         self.type = screenshot_type
 
     def to_greyscale(self, filename):
-        image = cv2.imread(f'{SCREENSHOT_RGB_PATH}/{filename}')
-        grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        status = cv2.imwrite(f'{SCREENSHOT_GREY_PATH}/{filename}', grey)
-
+        # image = cv2.imread(f'{SCREENSHOT_RGB_PATH}/{filename}')
+        # grey = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        # status = cv2.imwrite(f'{SCREENSHOT_GREY_PATH}/{filename}', grey)
+        status = True
         self.type = ScreenshotEnum.GREYSCALE
         self.path = f'{SCREENSHOT_GREY_PATH}/{filename}'
         return status

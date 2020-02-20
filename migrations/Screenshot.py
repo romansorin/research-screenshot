@@ -4,8 +4,8 @@ from sqlalchemy.orm import relationship, backref
 
 from models.Screenshot import ScreenshotEnum
 
-from models.Base import Base
-class Screenshot(Base):
+
+class Screenshot:
     __tablename__ = 'screenshots'
 
     id = Column(Integer, primary_key=True)

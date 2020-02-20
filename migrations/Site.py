@@ -1,10 +1,8 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
-from models.Base import Base
 
-
-class Site(Base):
+class Site:
     __tablename__ = 'sites'
 
     id = Column(Integer, primary_key=True)

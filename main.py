@@ -1,8 +1,12 @@
 import requests
 import json
-from models.Database import Database, Session
+from models.Database import drop, migrate, Session
 from models.Response import Response as R
-
+from sqlalchemy import Column, Integer, String
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm.session import sessionmaker
+from config.database import conn_string
 alexa_url = 'https://ats.api.alexa.com/api?Action=Topsites&Count=10&ResponseGroup=Country&Start=1&Output=json'
 api_key = 'xcBVFF7Ypf1E4CXbIkOnctD1vl4drcw5ZJZEPYC0'
 headers = {'x-api-key': api_key}
@@ -19,12 +23,30 @@ b = {
 NOTE: THINGS ARE INCREDIBLY, INCREDIBLY BROKEN.
 """
 print(json.dumps(b))
-
+from sqlalchemy import Column, Integer, String
+from sqlalchemy import create_engine
 
 if __name__ == "__main__":
+    engine = create_engine(conn_string)
+    Session = sessionmaker(bind=engine)
+    from sqlalchemy.ext.declarative import declarative_base
+
+    Base = declarative_base()
+
+
+    class Response(Base):
+        __tablename__ = 'responses'
+
+        id = Column(Integer, primary_key=True)
+        content = Column(Integer, nullable=False)
+
+
+    Base.metadata.create_all(engine)
+
+
+    r = Response(content=2)
     session = Session()
-    response = R(json.dumps(b))
-    session.add(response)
+    session.add(r)
     session.commit()
     # Database.drop()
     # Database.migrate()
