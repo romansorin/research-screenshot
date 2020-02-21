@@ -1,4 +1,8 @@
 from models.Base import Base, Session, engine
+from migrations.Site import Site
+from migrations.Screenshot import Screenshot
+from migrations.Response import Response
+from migrations.ParsedResponse import ParsedResponse
 from config.aws import API_KEY
 import requests
 import json
@@ -45,15 +49,13 @@ def make_api_request(url, headers):
     return requests.get(url, headers=headers)
 
 
-with open('test.json') as f:
-    data = json.load(f)
 
 
 if __name__ == "__main__":
-
+    migrate_fresh()
     # b = json.dumps(a)
-    # for site in parse_response(data):
-    #     print(site)
+    # for site in parse_response(a):
+    #     print(json.dumps(site))
     # f = open("test.json", "w")
     # f.write(b)
     # f.close()
