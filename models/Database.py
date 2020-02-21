@@ -13,16 +13,3 @@ Session = sessionmaker(bind=engine)
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
-
-
-
-Base.metadata.create_all(engine)
-
-
-def migrate():
-    print("Migrated tables")
-
-
-def drop():
-    Base.metadata.drop_all(engine)
-    print("Dropped tables")
