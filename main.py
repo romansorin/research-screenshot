@@ -1,7 +1,7 @@
 import requests
 import json
 from models.Database import drop, migrate, Session
-from migrations.Response import Response
+from models.Response import Response
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
