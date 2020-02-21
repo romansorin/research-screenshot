@@ -8,4 +8,3 @@ class Response(Base):
 
     id = Column(Integer, primary_key=True)
     content = Column(JSON, nullable=False)
-

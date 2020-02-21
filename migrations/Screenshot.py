@@ -1,11 +1,11 @@
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref
 
+from models.Base import Base
 from models.Screenshot import ScreenshotEnum
 
 
-class Screenshot:
+class Screenshot(Base):
     __tablename__ = 'screenshots'
 
     id = Column(Integer, primary_key=True)
