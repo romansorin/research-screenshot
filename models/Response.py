@@ -1,3 +1,3 @@
 class Response:
-    def __init__(self, content):
-        self.content = content
+    def __init__(self, response):
+        self.response = response
