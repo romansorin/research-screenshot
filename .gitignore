@@ -131,3 +131,6 @@ dmypy.json
 .idea
 .DS_Store
 .vscode
+
+aws.py
+config/aws.py
