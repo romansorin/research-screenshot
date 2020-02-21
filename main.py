@@ -1,7 +1,7 @@
 import requests
 import json
 from models.Database import drop, migrate, Session
-from models.Response import Response as R
+from migrations.Response import Response
 from sqlalchemy import Column, Integer, String
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -19,6 +19,13 @@ b = {
 }
 
 
+from models.Base import Base, Session, engine
+
+Base.metadata.create_all(engine)
+
+
+
+
 """
 NOTE: THINGS ARE INCREDIBLY, INCREDIBLY BROKEN.
 """
@@ -27,27 +34,13 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy import create_engine
 
 if __name__ == "__main__":
-    engine = create_engine(conn_string)
-    Session = sessionmaker(bind=engine)
-    from sqlalchemy.ext.declarative import declarative_base
-
-    Base = declarative_base()
-
-
-    class Response(Base):
-        __tablename__ = 'responses'
-
-        id = Column(Integer, primary_key=True)
-        content = Column(Integer, nullable=False)
-
-
-    Base.metadata.create_all(engine)
-
-
-    r = Response(content=2)
     session = Session()
-    session.add(r)
+
+    response = Response(content=5)
+
+    session.add(response)
     session.commit()
+    session.close()
     # Database.drop()
     # Database.migrate()
     # # print(a)

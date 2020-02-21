@@ -15,12 +15,6 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 
-class Response(Base):
-    __tablename__ = 'responses'
-
-    id = Column(Integer, primary_key=True)
-    content = Column(Integer, nullable=False)
-
 
 Base.metadata.create_all(engine)
 
