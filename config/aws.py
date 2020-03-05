@@ -1,1 +1,2 @@
 API_KEY='xcBVFF7Ypf1E4CXbIkOnctD1vl4drcw5ZJZEPYC0'
+HEADERS = {'x-api-key': API_KEY}
