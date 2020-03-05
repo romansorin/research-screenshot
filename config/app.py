@@ -12,3 +12,5 @@ SCREENSHOT_GREY_PATH = f'./{SCREENSHOT_ROOT_PATH}/greyscale'
 ################################
 QUERY_START_FILENAME = 'query_start.txt'
 QUERY_START_PATH = f'./storage/{QUERY_START_FILENAME}'
+
+STORAGE_LOGS_PATH = './storage/logs'
