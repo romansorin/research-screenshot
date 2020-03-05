@@ -34,6 +34,20 @@ DONE - 1. Query AWS API
 """
 
 
+
+"""
+
+- extract name of site from exploded url
+
+for cases where domain names are the same:
+- keep subdomains even if root domain is same
+- two options for handling duplicates root domains, but different tlds:
+    1. keep organizational tld, filter/pop geographical tlds
+    2. run another hidden layer / image processing step for image similarity; if 95%+ similar
+"""
+
+# TODO: Add method documentation
+
 def query_api_url(count, start):
     return f'https://ats.api.alexa.com/api?Action=Topsites&Count={count}&ResponseGroup=Country&Start={start}&Output=json'
 
@@ -121,10 +135,39 @@ def parse_collected_data():
     session.close()
     f.close()
 
+"""
+To create a site object:
+fields(name, host)
+
+Given a parsed response in the form of fields(url):
+  - Split up the URL by it's root and subdomain, as well as TLD
+  - Use the root domain for base name, and use subdomain with replaced period delimiter as hyphen (ex. status.romansorin.com becomes name=status-romansorin)
+  - Figure out an efficient way to sort and search the root domains
+  - If root domain is equal to another root domain, flag it; eventually compare the screenshot of two sites; if they are below some threshold of similarity (such as 10) then only use the response that is ranked higher
+  - set url = host
+"""
+
+"""
+For screenshots:
+: foreach sites as site :
+  - Navigate to site.host
+  - Take screenshot (fullpage)
+  - Convert to greyscale rgb
+  - Make any comparisons as necessary
+"""
 
 
 if __name__ == "__main__":
-    parse_collected_data()
+    pass
+    # r = requests.post(
+    #     "https://api.deepai.org/api/image-similarity",
+    #     data={
+    #         'image1': 'https://i.ibb.co/9skSC62/download-3.png',
+    #         'image2': 'https://i.ibb.co/NnTFz5Y/download-4.png',
+    #     },
+    #     headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
+    # )
+    # print(r.json())
     # driver = Driver()
     # for site in sites:
     #     start_time, last_height = setup(site["name"], site["url"])
