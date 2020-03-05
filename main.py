@@ -47,20 +47,22 @@ def make_api_request(url):
 
 
 def log_response(data):
-    timestamp = datetime.datetime.now()
-    timestamp = str(timestamp).replace(" ", "_").replace(".", "-").replace(":", "-")
-    filename = f"query_{timestamp}.log"
+    filename = f"query_{file_safe_timestamp()}.log"
     f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
     f.write(str(datetime.datetime.now()) + "\n\n")
     f.write(json.dumps(data))
     f.close()
 
 
+def file_safe_timestamp():
+    return str(datetime.datetime.now()).replace(" ", "_").replace(".", "-").replace(":", "-")
+
+
 def collect_aws_data():
     session = Session()
-    limit = 3
+    limit = 1001
     lower = 1
-    interval = 3
+    interval = 100
 
     for i in range(lower, limit, interval):
         query_start = int(open(QUERY_START_PATH, 'r').readlines()[0])
@@ -85,9 +87,7 @@ def parse_collected_data():
     session = Session()
     data = session.query(Response).filter_by(parsed=False)
 
-    timestamp = datetime.datetime.now()
-    timestamp = str(timestamp).replace(" ", "_").replace(".", "-").replace(":", "-")
-    filename = f"parsed_response_{timestamp}.log"
+    filename = f"parsed_response_{file_safe_timestamp()}.log"
     f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
     f.write(str(datetime.datetime.now()) + "\n\n")
 
