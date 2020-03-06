@@ -7,6 +7,8 @@ from config.app import STORAGE_LOGS_PATH, QUERY_START_PATH
 from config.aws import HEADERS
 from migrations.ParsedResponse import ParsedResponse
 from migrations.Response import Response
+from migrations.Site import Site
+from migrations.Screenshot import Screenshot
 from models.Base import Base, Session, engine
 
 
@@ -22,18 +24,15 @@ DONE - 1. Query AWS API
  - Add response to database
  - Update start variable (found in plaintext txt)
 
-2. SELECT response FROM responses
+DONE - 2. SELECT response FROM responses
  - Clean up each result: structure: Ats->Results->Result->Alexa->TopSites->Country->Sites->Site[Object]
  - Mark that query as parsed
  - Create a Site object from that
 
 3. Take screenshot of DataUrl from that query
- - Create Site object
  - Create Screenshot object linked to that site
  - Run RGB Screenshot object into greyscale conversion
 """
-
-
 
 """
 
@@ -45,6 +44,7 @@ for cases where domain names are the same:
     1. keep organizational tld, filter/pop geographical tlds
     2. run another hidden layer / image processing step for image similarity; if 95%+ similar
 """
+
 
 # TODO: Add method documentation
 
@@ -135,6 +135,30 @@ def parse_collected_data():
     session.close()
     f.close()
 
+
+def convert_parsed_to_site():
+    session = Session()
+    data = session.query(ParsedResponse).all()
+
+    filename = f"parsed_to_sites_{file_safe_timestamp()}.log"
+    f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
+    f.write(str(datetime.datetime.now()) + "\n\n")
+
+    for response in data:
+        print(f"Beginning response {response.id}")
+        f.write(f"Beginning response {response.id}: \n")
+        split_url = response.url.split(".")
+        site = Site(name='_'.join(split_url), host=response.url)
+        print(f"Parsing site {'_'.join(split_url)} at host {response.url}")
+        f.write(f"Parsing site {'_'.join(split_url)} at host {response.url} \n\n")
+        session.add(site)
+        session.commit()
+        print(f"Finished parsing response number {response.id}")
+        f.write(f"Finished parsing response number {response.id} \n\n")
+
+    session.close()
+
+
 """
 To create a site object:
 fields(name, host)
@@ -156,9 +180,9 @@ For screenshots:
   - Make any comparisons as necessary
 """
 
-
 if __name__ == "__main__":
-    pass
+    convert_parsed_to_site()
+    # migrate_fresh()
     # r = requests.post(
     #     "https://api.deepai.org/api/image-similarity",
     #     data={
