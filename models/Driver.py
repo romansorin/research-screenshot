@@ -12,7 +12,9 @@ from config.driver import *
 
 
 class Driver:
-    def __init__(self):
+    def __init__(self, log_filename):
+        self.file = open(f"{STORAGE_LOGS_PATH}/{log_filename}", "x")
+        self.file.write(str(datetime.datetime.now()) + "\n\n")
         self.driver = webdriver.Firefox(**self.__boot())
         self.driver.implicitly_wait(60)
 
@@ -99,10 +101,9 @@ class Driver:
 
         return Time.now(), self.get_scroll_height()
 
-    def run(self, site, log_filename):
-        f = open(f"{STORAGE_LOGS_PATH}/{log_filename}", "x")
-        f.write(str(datetime.datetime.now()) + "\n\n")
+    def run(self, site):
         start_time, last_height = self.setup(site["name"], site["url"])
         last_height = self.scroll(last_height)
         self.rescroll(last_height)
         self.screenshot(site["name"], start_time, last_height)
+        self.file.close()
