@@ -35,6 +35,22 @@ DONE - 2. SELECT response FROM responses
 """
 
 """
+https://github.com/rohanbaisantry/image-clustering
+https://github.com/asselinpaul/ImageSeg-KMeans
+https://github.com/abhijeet3922/Image-compression-with-Kmeans-clustering
+https://shirinsplayground.netlify.com/2018/10/keras_fruits_cluster/
+https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+https://keras.io/applications/
+https://stackoverflow.com/questions/39123421/image-clustering-by-its-similarity-in-python
+https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_ml/py_kmeans/py_kmeans_opencv/py_kmeans_opencv.html
+https://github.com/eriklindernoren/ML-From-Scratch
+https://github.com/zegami/image-similarity-clustering
+https://github.com/Wrinth/Image-Compression-with-K-Means-Clustering
+https://github.com/elcorto/imagecluster
+https://github.com/beleidy/unsupervised-image-clustering
+"""
+
+"""
 
 - extract name of site from exploded url
 
@@ -181,7 +197,7 @@ For screenshots:
 """
 
 if __name__ == "__main__":
-    convert_parsed_to_site()
+    pass
     # migrate_fresh()
     # r = requests.post(
     #     "https://api.deepai.org/api/image-similarity",
