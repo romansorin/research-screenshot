@@ -1,3 +1,4 @@
+import datetime
 import os
 import platform
 import time
@@ -5,7 +6,8 @@ import time
 from selenium import webdriver
 
 import services.Time as Time
-from config.app import SCREENSHOT_ROOT_PATH
+from config.app import SCREENSHOT_RGB_PATH
+from config.app import STORAGE_LOGS_PATH
 from config.driver import *
 
 
@@ -78,7 +80,7 @@ class Driver:
         print(self.get_window_height())
 
         self.scroll_to("document.body.scrollHeight")
-        path = f"{SCREENSHOT_ROOT_PATH}/{filename}.png"
+        path = f"{SCREENSHOT_RGB_PATH}/{filename}.png"
         try:
             self.driver.find_element_by_tag_name("body").screenshot(path)
         except Exception as e:
@@ -97,8 +99,10 @@ class Driver:
 
         return Time.now(), self.get_scroll_height()
 
-    def run(self, site):
-      start_time, last_height = self.setup(site["name"], site["url"])
-      last_height = self.scroll(last_height)
-      self.rescroll(last_height)
-      self.screenshot(site["name"], start_time, last_height)
+    def run(self, site, log_filename):
+        f = open(f"{STORAGE_LOGS_PATH}/{log_filename}", "x")
+        f.write(str(datetime.datetime.now()) + "\n\n")
+        start_time, last_height = self.setup(site["name"], site["url"])
+        last_height = self.scroll(last_height)
+        self.rescroll(last_height)
+        self.screenshot(site["name"], start_time, last_height)

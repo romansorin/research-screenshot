@@ -213,9 +213,15 @@ For screenshots:
 """
 
 if __name__ == "__main__":
-    pass
-
     driver = Driver()
+    sites = [
+        {
+            'name': 'romansorin',
+            'url': 'https://romansorin.com'
+        }
+    ]
+
+    log_filename = f"screenshot_{file_safe_timestamp()}.log"
     for site in sites:
-        driver.run(site)
+        driver.run(site, log_filename)
     driver.quit()
