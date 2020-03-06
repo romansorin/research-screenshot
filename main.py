@@ -193,15 +193,15 @@ def __image_sim__():
 def process_sites():
     session = Session()
 
-    log_filename = f"screenshot_{file_safe_timestamp()}.log"
-    driver = Driver(log_filename)
     sites = session.query(Site).filter_by(processed=False)
 
     for site in sites:
+        log_filename = f"screenshot_{file_safe_timestamp()}.log"
+        driver = Driver(log_filename)
         driver.run(site, session)
+        driver.quit()
 
     session.close()
-    driver.quit()
 
 
 """
