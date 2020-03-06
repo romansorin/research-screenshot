@@ -8,8 +8,13 @@ from config.aws import HEADERS
 from migrations.ParsedResponse import ParsedResponse
 from migrations.Response import Response
 from migrations.Site import Site
-from migrations.Screenshot import Screenshot
 from models.Base import Base, Session, engine
+
+
+# TODO: Flag sites that have a scroll height of over 10000 or 15000 (arbitrary)
+# TODO: On site screenshot, record time elapsed, scroll height, flag status, screenshot path, sitename, url, etc.
+# TODO: Possibly check amt of white space in screenshot?
+# TODO: Possibly switch to regular screenshot method instead of height extension if scroll height > 50000 or flag?
 
 
 def migrate_fresh():
