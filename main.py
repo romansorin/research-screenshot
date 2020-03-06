@@ -13,10 +13,7 @@ from models.Driver import Driver
 from models.Base import Base, Session, engine
 
 
-# TODO: Flag sites that have a scroll height of over 30000 (arbitrary)
-# TODO: On site screenshot, record time elapsed, scroll height, flag status, screenshot path, sitename, url, etc.
 # TODO: Possibly check amt of white space in screenshot?
-# TODO: Possibly switch to regular screenshot method instead of height extension if scroll height > 30000 or flag?
 
 
 def migrate_fresh():

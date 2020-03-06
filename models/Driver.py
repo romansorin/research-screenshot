@@ -12,6 +12,7 @@ from config.driver import *
 from migrations.Screenshot import Screenshot, ScreenshotEnum
 from migrations.Site import Site
 
+
 class Driver:
     def __init__(self, log_filename):
         self.file = open(f"{STORAGE_LOGS_PATH}/{log_filename}", "x")
