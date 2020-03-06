@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Boolean
 from sqlalchemy.orm import relationship
 
 from models.Base import Base
+
 class Site(Base):
     __tablename__ = 'sites'
 
