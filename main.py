@@ -4,6 +4,7 @@ import json
 import requests
 
 from config.app import STORAGE_LOGS_PATH, QUERY_START_PATH
+from config.openai import IMAGE_SIMILARITY_API_KEY
 from config.aws import HEADERS
 from migrations.ParsedResponse import ParsedResponse
 from migrations.Response import Response
@@ -178,14 +179,14 @@ def convert_parsed_to_site():
 
     session.close()
 
-def __image_sim__():
+def __image_sim__(path):
     r = requests.post(
         "https://api.deepai.org/api/image-similarity",
         data={
-            'image1': 'https://i.ibb.co/9skSC62/download-3.png',
-            'image2': 'https://i.ibb.co/NnTFz5Y/download-4.png',
+            'image1': open(path, 'rb'),
+            'image2': open(path, 'rb')
         },
-        headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
+        headers={'api-key': IMAGE_SIMILARITY_API_KEY}
     )
     print(r.json())
 
