@@ -9,7 +9,8 @@ import services.Time as Time
 from config.app import SCREENSHOT_RGB_PATH
 from config.app import STORAGE_LOGS_PATH
 from config.driver import *
-
+from migrations.Screenshot import Screenshot, ScreenshotEnum
+from migrations.Site import Site
 
 class Driver:
     def __init__(self, log_filename):
@@ -17,6 +18,12 @@ class Driver:
         self.file.write(str(datetime.datetime.now()) + "\n\n")
         self.driver = webdriver.Firefox(**self.__boot())
         self.driver.implicitly_wait(60)
+        self.model_path = None
+        self.model_type = ScreenshotEnum.RGB
+        self.model_scroll_height = 0
+        self.model_time_elapsed = "0"
+        self.model_exceeded_height = False
+        self.model_failed = False
 
     def __boot(self):
         geckodriver = os.path.join('./drivers/',
@@ -57,11 +64,11 @@ class Driver:
             time.sleep(SCROLL_PAUSE_TIME)
 
             new_height = self.get_scroll_height()
-            # Mark screenshot.scroll_height as new_height
+            self.model_scroll_height = new_height
             if new_height == height:
                 break
             elif new_height >= MAX_SCROLL_HEIGHT:
-                # Mark screenshot.exceeded_height as True
+                self.model_exceeded_height = True
                 break
             height = new_height
         return height
@@ -87,15 +94,15 @@ class Driver:
 
         self.scroll_to("document.body.scrollHeight")
         path = f"{SCREENSHOT_RGB_PATH}/{filename}.png"
+        self.model_path = path
         try:
             self.driver.find_element_by_tag_name("body").screenshot(path)
         except Exception as e:
-            # Mark screenshot.failed as True
+            self.model_failed = True
             print("Something went wrong when trying to take the screenshot: ", e)
             self.file.write(f"Something went wrong when trying to take the screenshot: {e} \n")
         finally:
-            # Mark screenshot.time_elapsed as time elapsed below
-            # Mark site where screenshot.site_id === site.id as processed = True
+            self.model_time_elapsed = str(Time.time_elapsed(start_time, Time.now()))
             print(f"Finished site {filename} in {Time.time_elapsed(start_time, Time.now())}")
             self.file.write(f"Finished site {filename} in {Time.time_elapsed(start_time, Time.now())} \n\n")
 
@@ -107,9 +114,20 @@ class Driver:
 
         return Time.now(), self.get_scroll_height()
 
-    def run(self, site):
-        start_time, last_height = self.setup(site["name"], site["url"])
+    def run(self, site, session):
+        name = site.name
+        url = f"http://{site.host}"
+        start_time, last_height = self.setup(name, url)
         last_height = self.scroll(last_height)
         self.rescroll(last_height)
-        self.screenshot(site["name"], start_time, last_height)
+        self.screenshot(name, start_time, last_height)
+
+        model = Screenshot(site_id=site.id, path=self.model_path, type=ScreenshotEnum.RGB,
+                           time_elapsed=self.model_time_elapsed,
+                           scroll_height=self.model_scroll_height, exceeded_height=self.model_exceeded_height,
+                           failed=self.model_failed)
+        site = session.query(Site).get(site.id)
+        site.processed = True
+        session.add(model)
+        session.commit()
         self.file.close()

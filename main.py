@@ -8,6 +8,7 @@ from config.aws import HEADERS
 from migrations.ParsedResponse import ParsedResponse
 from migrations.Response import Response
 from migrations.Site import Site
+from migrations.Screenshot import Screenshot
 from models.Driver import Driver
 from models.Base import Base, Session, engine
 
@@ -191,6 +192,21 @@ def __image_sim__():
     )
     print(r.json())
 
+
+def process_sites():
+    session = Session()
+
+    log_filename = f"screenshot_{file_safe_timestamp()}.log"
+    driver = Driver(log_filename)
+    sites = session.query(Site).filter_by(processed=False)
+
+    for site in sites:
+        driver.run(site, session)
+
+    session.close()
+    driver.quit()
+
+
 """
 To create a site object:
 fields(name, host)
@@ -213,15 +229,4 @@ For screenshots:
 """
 
 if __name__ == "__main__":
-    log_filename = f"screenshot_{file_safe_timestamp()}.log"
-    driver = Driver(log_filename)
-    sites = [
-        {
-            'name': 'romansorin',
-            'url': 'https://romansorin.com'
-        }
-    ]
-
-    for site in sites:
-        driver.run(site)
-    driver.quit()
+    process_sites()
