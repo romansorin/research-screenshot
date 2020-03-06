@@ -52,6 +52,7 @@ class Driver:
     def scroll(self, height):
         while True:
             print(f"Scrolling to height {height}")
+            self.file.write(f"Scrolling to height {height} \n")
             self.scroll_to("document.body.scrollHeight")
             time.sleep(SCROLL_PAUSE_TIME)
 
@@ -70,16 +71,19 @@ class Driver:
 
         while current_scroll < height:
             print(f"Rescrolling page to {current_scroll}")
+            self.file.write(f"Rescrolling page to {current_scroll} \n")
             self.scroll_to(current_scroll)
             time.sleep(RESCROLL_PAUSE_TIME)
             current_scroll += RESCROLL_INCREMENTS
 
     def screenshot(self, filename, start_time, height):
         print(self.get_window_height())
+        self.file.write(f"Window height: {self.get_window_height()} \n")
         self.set_window_height(height + 150)
         self.driver.set_window_position(0, 0)
 
         print(self.get_window_height())
+        self.file.write(f"Window height with 150px addition: {self.get_window_height()} \n")
 
         self.scroll_to("document.body.scrollHeight")
         path = f"{SCREENSHOT_RGB_PATH}/{filename}.png"
@@ -87,15 +91,17 @@ class Driver:
             self.driver.find_element_by_tag_name("body").screenshot(path)
         except Exception as e:
             # Mark screenshot.failed as True
-            print("Something went wrong when trying to take the screenshot.")
+            print("Something went wrong when trying to take the screenshot: ", e)
+            self.file.write(f"Something went wrong when trying to take the screenshot: {e} \n")
         finally:
             # Mark screenshot.time_elapsed as time elapsed below
             # Mark site where screenshot.site_id === site.id as processed = True
             print(f"Finished site {filename} in {Time.time_elapsed(start_time, Time.now())}")
+            self.file.write(f"Finished site {filename} in {Time.time_elapsed(start_time, Time.now())} \n\n")
 
     def setup(self, name, url):
         print(f"Beginning site {name} at url {url}")
-
+        self.file.write(f"Beginning site {name} at url {url} \n")
         self.set_window_height()
         self.driver.get(url)
 
