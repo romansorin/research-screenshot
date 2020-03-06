@@ -47,15 +47,16 @@ class Driver:
 
     def scroll(self, height):
         while True:
-
             print(f"Scrolling to height {height}")
             self.scroll_to("document.body.scrollHeight")
             time.sleep(SCROLL_PAUSE_TIME)
 
             new_height = self.get_scroll_height()
+            # Mark screenshot.scroll_height as new_height
             if new_height == height:
                 break
             elif new_height >= MAX_SCROLL_HEIGHT:
+                # Mark screenshot.exceeded_height as True
                 break
             height = new_height
         return height
@@ -81,15 +82,23 @@ class Driver:
         try:
             self.driver.find_element_by_tag_name("body").screenshot(path)
         except Exception as e:
+            # Mark screenshot.failed as True
             print("Something went wrong when trying to take the screenshot.")
         finally:
-
+            # Mark screenshot.time_elapsed as time elapsed below
+            # Mark site where screenshot.site_id === site.id as processed = True
             print(f"Finished site {filename} in {Time.time_elapsed(start_time, Time.now())}")
 
     def setup(self, name, url):
-        print(f"Beginning site: {name}")
+        print(f"Beginning site {name} at url {url}")
 
         self.set_window_height()
         self.driver.get(url)
 
         return Time.now(), self.get_scroll_height()
+
+    def run(self, site):
+      start_time, last_height = self.setup(site["name"], site["url"])
+      last_height = self.scroll(last_height)
+      self.rescroll(last_height)
+      self.screenshot(site["name"], start_time, last_height)

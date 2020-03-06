@@ -8,13 +8,14 @@ from config.aws import HEADERS
 from migrations.ParsedResponse import ParsedResponse
 from migrations.Response import Response
 from migrations.Site import Site
+from models.Driver import Driver
 from models.Base import Base, Session, engine
 
 
-# TODO: Flag sites that have a scroll height of over 10000 or 15000 (arbitrary)
+# TODO: Flag sites that have a scroll height of over 30000 (arbitrary)
 # TODO: On site screenshot, record time elapsed, scroll height, flag status, screenshot path, sitename, url, etc.
 # TODO: Possibly check amt of white space in screenshot?
-# TODO: Possibly switch to regular screenshot method instead of height extension if scroll height > 50000 or flag?
+# TODO: Possibly switch to regular screenshot method instead of height extension if scroll height > 30000 or flag?
 
 
 def migrate_fresh():
@@ -179,6 +180,16 @@ def convert_parsed_to_site():
 
     session.close()
 
+def __image_sim__():
+    r = requests.post(
+        "https://api.deepai.org/api/image-similarity",
+        data={
+            'image1': 'https://i.ibb.co/9skSC62/download-3.png',
+            'image2': 'https://i.ibb.co/NnTFz5Y/download-4.png',
+        },
+        headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
+    )
+    print(r.json())
 
 """
 To create a site object:
@@ -203,20 +214,8 @@ For screenshots:
 
 if __name__ == "__main__":
     pass
-    # migrate_fresh()
-    # r = requests.post(
-    #     "https://api.deepai.org/api/image-similarity",
-    #     data={
-    #         'image1': 'https://i.ibb.co/9skSC62/download-3.png',
-    #         'image2': 'https://i.ibb.co/NnTFz5Y/download-4.png',
-    #     },
-    #     headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
-    # )
-    # print(r.json())
-    # driver = Driver()
-    # for site in sites:
-    #     start_time, last_height = setup(site["name"], site["url"])
-    #     last_height = scroll(last_height)
-    #     rescroll(last_height)
-    #     screenshot(site["name"], start_time, last_height)
-    # driver.quit()
+
+    driver = Driver()
+    for site in sites:
+        driver.run(site)
+    driver.quit()
