@@ -3725,3 +3725,735 @@ JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't fin
 1583465594937	Marionette	INFO	Listening on port 56898
 1583465595299	Marionette	WARN	TLS certificate errors will be ignored for this session
 1583465606429	Marionette	INFO	Stopped listening on port 56898
+1583466330619	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofileK59T9I"
+*** You are running in headless mode.
+1583466330802	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466330803	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466330803	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466330804	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466330882	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466330882	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466330882	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466330882	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583466330932	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583466331017	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466331018	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466331018	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466331018	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583466331908	Marionette	INFO	Listening on port 57672
+1583466332228	Marionette	WARN	TLS certificate errors will be ignored for this session
+1583466352811	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofile7WptPb"
+*** You are running in headless mode.
+1583466352987	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466352988	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466352989	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466352989	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466353066	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466353066	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466353066	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466353066	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583466353114	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583466353193	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466353193	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466353193	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466353193	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583466354049	Marionette	INFO	Listening on port 57723
+1583466354420	Marionette	WARN	TLS certificate errors will be ignored for this session
+1583466354542	Marionette	INFO	Stopped listening on port 57723
+1583466392164	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofile3oanin"
+*** You are running in headless mode.
+1583466392337	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466392338	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466392338	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466392338	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466392413	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466392413	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466392413	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466392413	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583466392460	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583466392545	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466392545	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466392545	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466392545	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583466393410	Marionette	INFO	Listening on port 57794
+1583466393770	Marionette	WARN	TLS certificate errors will be ignored for this session
+1583466393817	Marionette	INFO	Stopped listening on port 57794
+1583466412834	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofileVM233k"
+*** You are running in headless mode.
+1583466413010	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466413010	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466413011	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466413011	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466413086	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466413086	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466413086	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466413086	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583466413133	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583466413210	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466413210	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466413210	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466413210	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583466414069	Marionette	INFO	Listening on port 57845
+1583466414443	Marionette	WARN	TLS certificate errors will be ignored for this session
+1583466414488	Marionette	INFO	Stopped listening on port 57845
+1583466588968	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofileslcrv9"
+*** You are running in headless mode.
+1583466589156	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466589157	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466589157	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466589158	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466589234	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466589234	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466589234	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466589234	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583466589283	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583466589364	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466589364	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466589364	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466589364	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583466590175	Marionette	INFO	Listening on port 58063
+1583466590578	Marionette	WARN	TLS certificate errors will be ignored for this session
+1583466604336	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofile7xKJQP"
+*** You are running in headless mode.
+1583466604528	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466604529	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466604529	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466604530	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466604610	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466604610	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466604611	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466604611	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583466604661	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583466604744	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466604744	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466604745	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466604745	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583466605618	Marionette	INFO	Listening on port 58111
+1583466605950	Marionette	WARN	TLS certificate errors will be ignored for this session
+1583466605995	Marionette	INFO	Stopped listening on port 58111
+1583466676732	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofileDq32af"
+*** You are running in headless mode.
+1583466676910	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466676911	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466676912	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466676912	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583466676987	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466676987	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466676987	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466676987	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583466677036	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583466677115	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583466677115	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583466677115	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583466677115	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583466677898	Marionette	INFO	Listening on port 58214
+1583466678341	Marionette	WARN	TLS certificate errors will be ignored for this session
+1583466678387	Marionette	INFO	Stopped listening on port 58214
+1583467396792	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofileaJk0QZ"
+*** You are running in headless mode.
+1583467396968	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467396969	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467396969	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467396970	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467397046	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583467397046	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583467397046	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583467397046	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583467397094	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583467397171	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583467397171	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583467397171	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583467397171	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583467397919	Marionette	INFO	Listening on port 59010
+1583467398402	Marionette	WARN	TLS certificate errors will be ignored for this session
+1583467429058	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofileoWQg0T"
+*** You are running in headless mode.
+1583467429242	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467429243	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467429244	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467429244	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467429322	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583467429322	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583467429322	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583467429322	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583467429370	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583467429449	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583467429449	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583467429449	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583467429449	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583467430304	Marionette	INFO	Listening on port 59070
+1583467430668	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://g.alicdn.com/secdev/nsv/1.0.72/ns_d_83_3_n.js, line 3: Error: WebGL warning: <SetDimensions>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://g.alicdn.com/secdev/nsv/1.0.72/ns_d_83_3_n.js, line 3: Error: WebGL warning: <SetDimensions>: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://g.alicdn.com/secdev/sufei_data/3.8.7/index.js, line 1: Error: WebGL warning: <SetDimensions>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://g.alicdn.com/secdev/sufei_data/3.8.7/index.js, line 1: Error: WebGL warning: <SetDimensions>: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1583467500544	Marionette	INFO	Stopped listening on port 59070
+[Parent 14564, Gecko_IOThread] WARNING: pipe error: 232: file z:/task_1579288126/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 507
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x370126,name=PContent::Msg_ScriptError) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0xB00006,name=PWebSocket::Msg_DeleteSelf) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1583467593548	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofileEP021o"
+*** You are running in headless mode.
+1583467593729	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467593730	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467593730	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467593730	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467593807	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583467593807	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583467593808	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583467593808	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583467593857	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583467593938	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583467593938	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583467593938	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583467593938	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583467594740	Marionette	INFO	Listening on port 59339
+1583467595157	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://g.alicdn.com/secdev/sufei_data/3.8.7/index.js, line 1: Error: WebGL warning: <SetDimensions>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://g.alicdn.com/secdev/sufei_data/3.8.7/index.js, line 1: Error: WebGL warning: <SetDimensions>: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://g.alicdn.com/secdev/nsv/1.0.72/ns_d_83_3_n.js, line 3: Error: WebGL warning: <SetDimensions>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://g.alicdn.com/secdev/nsv/1.0.72/ns_d_83_3_n.js, line 3: Error: WebGL warning: <SetDimensions>: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1583467614721	Marionette	INFO	Stopped listening on port 59339
+1583467724131	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-headless" "--width=2560" "--height=1440" "-foreground" "-no-remote" "-profile" "C:\\Users\\Roman\\AppData\\Local\\Temp\\rust_mozprofileI0Hiti"
+*** You are running in headless mode.
+1583467724308	addons.xpi-utils	WARN	Could not find source bundle for add-on formautofill@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467724309	addons.xpi-utils	WARN	Could not find source bundle for add-on screenshots@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467724310	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat-reporter@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467724310	addons.xpi-utils	WARN	Could not find source bundle for add-on webcompat@mozilla.org: [Exception... "Component returned failure code: 0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH) [nsIFile.initWithPath]"  nsresult: "0x80520001 (NS_ERROR_FILE_UNRECOGNIZED_PATH)"  location: "JS frame :: resource://gre/modules/addons/XPIDatabase.jsm :: parseDB/< :: line 1599"  data: no] Stack trace: parseDB/<()@resource://gre/modules/addons/XPIDatabase.jsm:1599
+parseDB()@resource://gre/modules/addons/XPIDatabase.jsm:1596
+asyncLoadDB/this._dbPromise<()@resource://gre/modules/addons/XPIDatabase.jsm:1674
+awaitPromise()@resource://gre/modules/addons/XPIProvider.jsm:226
+syncLoadDB()@resource://gre/modules/addons/XPIDatabase.jsm:1545
+checkForChanges()@resource://gre/modules/addons/XPIProvider.jsm:2926
+startup()@resource://gre/modules/addons/XPIProvider.jsm:2388
+callProvider()@resource://gre/modules/AddonManager.jsm:215
+_startProvider()@resource://gre/modules/AddonManager.jsm:651
+startup()@resource://gre/modules/AddonManager.jsm:875
+startup()@resource://gre/modules/AddonManager.jsm:3534
+observe()@resource://gre/modules/addonManager.js:87
+1583467724384	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583467724384	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583467724385	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583467724385	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+1583467724431	addons.webextension.doh-rollout@mozilla.org	WARN	Loading extension 'doh-rollout@mozilla.org': Reading manifest: Invalid extension permission: networkStatus
+1583467724507	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1583467724507	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: telemetry
+1583467724507	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1583467724507	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1583467725355	Marionette	INFO	Listening on port 59584
+1583467725740	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://g.alicdn.com/secdev/sufei_data/3.8.7/index.js, line 1: Error: WebGL warning: <SetDimensions>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://g.alicdn.com/secdev/sufei_data/3.8.7/index.js, line 1: Error: WebGL warning: <SetDimensions>: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://g.alicdn.com/secdev/nsv/1.0.72/ns_d_83_3_n.js, line 3: Error: WebGL warning: <SetDimensions>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://g.alicdn.com/secdev/nsv/1.0.72/ns_d_83_3_n.js, line 3: Error: WebGL warning: <SetDimensions>: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1583467743537	Marionette	INFO	Stopped listening on port 59584
