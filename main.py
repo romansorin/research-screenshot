@@ -9,7 +9,7 @@ from config.aws import HEADERS
 from migrations.ParsedResponse import ParsedResponse
 from migrations.Response import Response
 from migrations.Site import Site
-from migrations.Screenshot import Screenshot
+from migrations.Screenshot import Screenshot, ScreenshotEnum
 from models.Driver import Driver
 from models.Base import Base, Session, engine
 
@@ -205,6 +205,31 @@ def process_sites():
     session.close()
 
 
+def reprocess_failed_sites():
+    session = Session()
+
+    failed_sites = session.query(Screenshot).filter_by(failed=True)
+    for site in failed_sites:
+        site = session.query(Site).get(site.site_id)
+        log_filename = f"screenshot_{file_safe_timestamp()}.log"
+        driver = Driver(log_filename)
+        driver.run(site, session)
+        driver.quit()
+
+    session.close()
+
+
+def convert_site_colorspace():
+    session = Session()
+    sites = session.query(Screenshot).all()
+    filtered_sites = []
+    for site in sites:
+        site = session.query(Screenshot).filter_by(site_id=site.site_id)
+        if site.count() > 1:
+            return
+        else:
+            filtered_sites.append(site)
+
 """
 To create a site object:
 fields(name, host)
@@ -218,6 +243,16 @@ Given a parsed response in the form of fields(url):
 """
 
 """
+Screenshot
+
+- Go to failed and exceeded jobs; take manual shots if necessary
+
+Then run RGB->greyscale conversion
+Then run image similarity algorithm
+^^ Processing checks
+"""
+
+"""
 For screenshots:
 : foreach sites as site :
   - Navigate to site.host
@@ -227,4 +262,4 @@ For screenshots:
 """
 
 if __name__ == "__main__":
-    process_sites()
+    convert_site_colorspace()

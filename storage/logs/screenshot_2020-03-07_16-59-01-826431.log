@@ -1,0 +1,17 @@
+2020-03-07 16:59:01.827432
+
+Beginning site lun_com at url http://lun.com 
+Scrolling to height 1366 
+Rescrolling page to 0 
+Rescrolling page to 200 
+Rescrolling page to 400 
+Rescrolling page to 600 
+Rescrolling page to 800 
+Rescrolling page to 1000 
+Rescrolling page to 1200 
+Window height: {'width': 2560, 'height': 1440} 
+Window height with 150px addition: {'width': 2560, 'height': 1516} 
+Something went wrong when trying to take the screenshot: Message: Unable to locate element: body
+ 
+Finished site lun_com in 0:01:08.676214 
+
