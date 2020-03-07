@@ -9,7 +9,8 @@ from config.aws import HEADERS
 from migrations.ParsedResponse import ParsedResponse
 from migrations.Response import Response
 from migrations.Site import Site
-from migrations.Screenshot import Screenshot, ScreenshotEnum
+from models.Screenshot import ScreenshotEnum, to_greyscale
+from migrations.Screenshot import Screenshot
 from models.Driver import Driver
 from models.Base import Base, Session, engine
 
@@ -221,15 +222,22 @@ def reprocess_failed_sites():
 
 def convert_site_colorspace():
     session = Session()
-    sites = session.query(Screenshot).all()
-    filtered_sites = []
-    for site in sites:
-        site = session.query(Screenshot).filter_by(site_id=site.site_id)
-        if site.count() > 1:
+    screenshots = session.query(Screenshot).filter_by(type=ScreenshotEnum.RGB)
+    for screenshot in screenshots:
+        sc_check = session.query(Screenshot).filter_by(site_id=screenshot.site_id)
+        flag = False
+        for sc in sc_check:
+            if sc.type == ScreenshotEnum.GREYSCALE:
+                flag = True
+
+        if flag:
             return
         else:
-            filtered_sites.append(site)
-
+            path = to_greyscale(screenshot.path, session.query(Site).get(screenshot.site_id).name)
+            greyscale_screenshot = Screenshot(site_id=screenshot.site_id, type=ScreenshotEnum.GREYSCALE, path=path)
+            session.add(greyscale_screenshot)
+            session.commit()
+    session.close()
 """
 To create a site object:
 fields(name, host)
