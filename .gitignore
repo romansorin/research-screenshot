@@ -133,3 +133,5 @@ dmypy.json
 
 aws.py
 config/aws.py
+openai.py
+config/openai.py
