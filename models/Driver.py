@@ -118,17 +118,27 @@ class Driver:
     def run(self, site, session):
         name = site.name
         url = f"http://{site.host}"
-        start_time, last_height = self.setup(name, url)
-        last_height = self.scroll(last_height)
-        self.rescroll(last_height)
-        self.screenshot(name, start_time, last_height)
+        try:
+            start_time, last_height = self.setup(name, url)
+            last_height = self.scroll(last_height)
+            self.rescroll(last_height)
+            self.screenshot(name, start_time, last_height)
 
-        model = Screenshot(site_id=site.id, path=self.model_path, type=ScreenshotEnum.RGB,
-                           time_elapsed=self.model_time_elapsed,
-                           scroll_height=self.model_scroll_height, exceeded_height=self.model_exceeded_height,
-                           failed=self.model_failed)
-        site = session.query(Site).get(site.id)
-        site.processed = True
-        session.add(model)
-        session.commit()
-        self.file.close()
+            model = Screenshot(site_id=site.id, path=self.model_path, type=ScreenshotEnum.RGB,
+                               time_elapsed=self.model_time_elapsed,
+                               scroll_height=self.model_scroll_height, exceeded_height=self.model_exceeded_height,
+                               failed=self.model_failed)
+            site = session.query(Site).get(site.id)
+            site.processed = True
+            session.add(model)
+            session.commit()
+        except Exception as e:
+            model = Screenshot(site_id=site.id,
+                               failed=True)
+            site = session.query(Site).get(site.id)
+            site.processed = True
+            session.add(model)
+            session.commit()
+            self.file.write(str(e))
+        finally:
+            self.file.close()

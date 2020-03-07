@@ -1,0 +1,19 @@
+2020-03-06 01:29:10.092427
+
+Beginning site 163_com at url http://163.com 
+Traceback (most recent call last):
+  File "main.py", line 229, in <module>
+    process_sites()
+  File "main.py", line 201, in process_sites
+    driver.run(site, session)
+  File "E:\Documents\Development\GitHub\research-screenshot\models\Driver.py", line 121, in run
+    start_time, last_height = self.setup(name, url)
+  File "E:\Documents\Development\GitHub\research-screenshot\models\Driver.py", line 114, in setup
+    self.driver.get(url)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Roman\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Reached error page: about:neterror?e=netTimeout&u=http%3A//163.com/&c=UTF-8&f=regular&d=The%20server%20at%20163.com%20is%20taking%20too%20long%20to%20respond.

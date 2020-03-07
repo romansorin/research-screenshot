@@ -1,0 +1,10 @@
+2020-03-07 00:40:03.239915
+
+Beginning site autodesk_com at url http://autodesk.com 
+Scrolling to height 0 
+Window height: {'width': 2560, 'height': 1440} 
+Window height with 150px addition: {'width': 2560, 'height': 150} 
+Something went wrong when trying to take the screenshot: Message: [Exception... "Data conversion failed because significant data would be lost"  nsresult: "0x80460003 (NS_ERROR_LOSS_OF_SIGNIFICANT_DATA)"  location: "<unknown>"  data: no]
+ 
+Finished site autodesk_com in 0:00:05.087850 
+
