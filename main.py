@@ -229,14 +229,14 @@ def convert_site_colorspace():
         for sc in sc_check:
             if sc.type == ScreenshotEnum.GREYSCALE:
                 print('Found greyscale version of screenshot.')
-                f.write('Found greyscale version of screenshot.')
+                f.write(f"Found greyscale version of screenshot. Skipping (id={sc.id}\n\n")
                 flag = True
         if flag:
             return
         else:
             site_name = session.query(Site).get(screenshot.site_id).name
             print(f"Converting screenshot of site {site_name} from RGB to GREYSCALE")
-            f.write(f"Converting screenshot of site {site_name} from RGB to GREYSCALE")
+            f.write(f"Converting screenshot of site {site_name} from RGB to GREYSCALE \n")
             path = to_greyscale(screenshot.path, site_name)
             greyscale_screenshot = Screenshot(site_id=screenshot.site_id, type=ScreenshotEnum.GREYSCALE, path=path)
             session.add(greyscale_screenshot)
