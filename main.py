@@ -15,9 +15,6 @@ from models.Driver import Driver
 from models.Base import Base, Session, engine
 
 
-# TODO: Possibly check amt of white space in screenshot?
-
-
 def migrate_fresh():
     Base.metadata.drop_all(engine)
     print("Dropped tables")
@@ -221,6 +218,9 @@ def reprocess_failed_sites():
 
 
 def convert_site_colorspace():
+    filename = f"convert_{file_safe_timestamp()}.log"
+    f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
+    f.write(str(datetime.datetime.now()) + "\n\n")
     session = Session()
     screenshots = session.query(Screenshot).filter_by(type=ScreenshotEnum.RGB)
     for screenshot in screenshots:
@@ -228,16 +228,24 @@ def convert_site_colorspace():
         flag = False
         for sc in sc_check:
             if sc.type == ScreenshotEnum.GREYSCALE:
+                print('Found greyscale version of screenshot.')
+                f.write('Found greyscale version of screenshot.')
                 flag = True
-
         if flag:
             return
         else:
-            path = to_greyscale(screenshot.path, session.query(Site).get(screenshot.site_id).name)
+            site_name = session.query(Site).get(screenshot.site_id).name
+            print(f"Converting screenshot of site {site_name} from RGB to GREYSCALE")
+            f.write(f"Converting screenshot of site {site_name} from RGB to GREYSCALE")
+            path = to_greyscale(screenshot.path, site_name)
             greyscale_screenshot = Screenshot(site_id=screenshot.site_id, type=ScreenshotEnum.GREYSCALE, path=path)
             session.add(greyscale_screenshot)
             session.commit()
+            print(f"Finished conversion of {site_name} from RGB to GREYSCALE")
+            f.write(f"Finished conversion of {site_name} from RGB to GREYSCALE \n\n")
     session.close()
+
+
 """
 To create a site object:
 fields(name, host)
