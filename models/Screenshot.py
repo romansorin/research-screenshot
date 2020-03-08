@@ -15,6 +15,3 @@ def to_greyscale(filepath, name):
 class ScreenshotEnum(enum.Enum):
     RGB = "RGB"
     GREYSCALE = "GREYSCALE"
-
-# for file in os.listdir('screenshots'):
-#     if file.endswith('.png')
