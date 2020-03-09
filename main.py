@@ -1,10 +1,11 @@
 import datetime
 import json
+from shutil import copyfile
 
 import requests
 from tld import get_tld
 
-from config.app import STORAGE_LOGS_PATH, QUERY_START_PATH
+from config.app import STORAGE_LOGS_PATH, QUERY_START_PATH, CLUSTER_DATA_PATH
 from config.aws import HEADERS
 from config.openai import IMAGE_SIMILARITY_API_KEY, SIMILARITY_THRESHOLD
 from migrations.ParsedResponse import ParsedResponse
@@ -326,7 +327,8 @@ def identify_layout_duplicates():
     filename = f"id_layout_duplicates_{file_safe_timestamp()}.log"
     f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
     f.write(str(datetime.datetime.now()) + "\n\n")
-    f.write(f"Layout duplication identification function, using threshold {SIMILARITY_THRESHOLD} for distance in image similarity")
+    f.write(
+        f"Layout duplication identification function, using threshold {SIMILARITY_THRESHOLD} for distance in image similarity")
     session = Session()
 
     sites = session.query(Site).order_by(Site.host)
@@ -413,6 +415,7 @@ def identify_layout_duplicates():
     f.close()
     return unique_domains
 
+
 def verify_db_integrity():
     session = Session()
     sites = session.query(Site).all()
@@ -426,6 +429,33 @@ def verify_db_integrity():
         result = session.query(Site).filter_by(id=screenshot.site_id).first()
         if not result:
             print(screenshot.id)
+
+
+def copy_unique_screenshots():
+    filename = 'unique_domains.log'
+    session = Session()
+    f = open(f'{STORAGE_LOGS_PATH}/{filename}', 'r')
+    log_filename = f"copy_unique_screenshots_{file_safe_timestamp()}.log"
+    log = open(f"{STORAGE_LOGS_PATH}/{log_filename}", "x")
+    log.write(str(datetime.datetime.now()) + "\n\n")
+    unique_domains = f.readlines()
+    for domain in unique_domains:
+        if domain.endswith('\n'):
+            domain = domain[0:len(domain) - 1]
+
+        print(f"Domain {domain}")
+        log.write(f"Domain {domain}")
+        site = session.query(Site).filter_by(host=domain).first()
+        screenshot = session.query(Screenshot).filter_by(type=ScreenshotEnum.GREYSCALE,
+                                                         site_id=site.id).first()
+        copyfile(screenshot.path, f"{CLUSTER_DATA_PATH}/{site.name}.png")
+        print(f"Copied greyscale screenshot to {CLUSTER_DATA_PATH}/{site.name}.png")
+        log.write(f"Copied greyscale screenshot to {CLUSTER_DATA_PATH}/{site.name}.png")
+    f.close()
+    print("Finished copying screenshots")
+    log.write("Finished copying screenshots")
+    log.close()
+
 
 """
 To create a site object:
@@ -465,4 +495,4 @@ For screenshots:
 # Also import clustering
 
 if __name__ == "__main__":
-    pass
+    copy_unique_screenshots()
