@@ -6,7 +6,8 @@ LOGGING = True
 SCREENSHOT_ROOT_PATH = './storage/screenshots'
 SCREENSHOT_RGB_PATH = f'{SCREENSHOT_ROOT_PATH}/original'
 SCREENSHOT_GREY_PATH = f'{SCREENSHOT_ROOT_PATH}/greyscale'
-CLUSTER_DATA_PATH = f'{SCREENSHOT_ROOT_PATH}/cluster_data'
+
+CLUSTER_DATA_PATH = './storage/cluster_data'
 
 ################################
 # Query tracking configuration #
