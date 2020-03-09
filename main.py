@@ -461,5 +461,8 @@ For screenshots:
   - Make any comparisons as necessary
 """
 
+# Next step: Parse unique domains log, foreach domain copy greyscale image (do a join) to cluster_data folder
+# Also import clustering
+
 if __name__ == "__main__":
     pass
