@@ -177,12 +177,13 @@ def convert_parsed_to_site():
 
     session.close()
 
-def __image_sim__(path):
+
+def __image_sim__(path_one, path_two):
     r = requests.post(
         "https://api.deepai.org/api/image-similarity",
         data={
-            'image1': open(path, 'rb'),
-            'image2': open(path, 'rb')
+            'image1': open(path_one, 'rb'),
+            'image2': open(path_two, 'rb')
         },
         headers={'api-key': IMAGE_SIMILARITY_API_KEY}
     )
@@ -247,6 +248,51 @@ def convert_site_colorspace():
 
 
 """
+General URL format:
+<domain_name>.<tld>
+
+
+Domain edge cases:
+Case one: <domain_name>.<tld> - count = 1
+Case two: <subdomain_name>.<domain_name>.<tld> - count = 2
+Case three: <subdomain_name>.<domain_name>.<tld>.<geo> - count = 3
+Case four: <domain_name>.<tld>.<geo> - count = 2
+
+If count is only one, then the domain can be stored under that key in some array using array element 0.
+If count is two, check for presence of TLD; if TLD is of last array element, then subdomain exists; else sort by domain name
+If count is three, subdomain-domain
+
+"""
+
+
+def identify_layout_duplicates():
+    session = Session()
+
+    sites = session.query(Site).order_by(Site.host)
+
+    list_by_delimiters = {
+        1: [],
+        2: [],
+        3: []
+    }
+
+    domains = {}
+
+    for site in sites:
+        delimiter_count = site.host.count('.')
+        list_by_delimiters[delimiter_count].append(site.host)
+
+    for site in list_by_delimiters[1]:
+        domains.update({site.split('.')[0]: []})
+        domains[site.split('.')[0]].append(site)
+        break
+
+    print(domains)
+        # domains[site.host.]
+    session.close()
+
+
+"""
 To create a site object:
 fields(name, host)
 
@@ -278,4 +324,4 @@ For screenshots:
 """
 
 if __name__ == "__main__":
-    convert_site_colorspace()
+    identify_layout_duplicates()
