@@ -444,16 +444,16 @@ def copy_unique_screenshots():
             domain = domain[0:len(domain) - 1]
 
         print(f"Domain {domain}")
-        log.write(f"Domain {domain}")
+        log.write(f"Domain {domain}\n")
         site = session.query(Site).filter_by(host=domain).first()
         screenshot = session.query(Screenshot).filter_by(type=ScreenshotEnum.GREYSCALE,
                                                          site_id=site.id).first()
         copyfile(screenshot.path, f"{CLUSTER_DATA_PATH}/{site.name}.png")
         print(f"Copied greyscale screenshot to {CLUSTER_DATA_PATH}/{site.name}.png")
-        log.write(f"Copied greyscale screenshot to {CLUSTER_DATA_PATH}/{site.name}.png")
+        log.write(f"Copied greyscale screenshot to {CLUSTER_DATA_PATH}/{site.name}.png\n")
     f.close()
     print("Finished copying screenshots")
-    log.write("Finished copying screenshots")
+    log.write("Finished copying screenshots\n\n")
     log.close()
 
 
