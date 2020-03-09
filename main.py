@@ -181,7 +181,7 @@ def convert_parsed_to_site():
 def __determine_image_sim__(path_one, path_two):
     r = requests.post(
         "https://api.deepai.org/api/image-similarity",
-        data={
+        files={
             'image1': open(path_one, 'rb'),
             'image2': open(path_two, 'rb')
         },
@@ -307,6 +307,20 @@ def __set_domain_values__(domains, delimited_list):
     return domains
 
 
+def insertion_sort(arr):
+    for i in range(len(arr)):
+        cursor = arr[i]
+        pos = i
+
+        while pos > 0 and arr[pos - 1] > cursor:
+            # Swap the number down the list
+            arr[pos] = arr[pos - 1]
+            pos = pos - 1
+        # Break and do the final swap
+        arr[pos] = cursor
+
+    return arr
+
 def identify_layout_duplicates():
     filename = f"id_layout_duplicates_{file_safe_timestamp()}.log"
     f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
@@ -355,14 +369,17 @@ def identify_layout_duplicates():
         else:
             filtered_domains = []
             for domain in domains:
-                filtered_domains.append(session.query(Site).filter_by(host=domain).first())
+                filtered_domains.append(session.query(Site).filter_by(host=domain).first().id)
 
-            print(filtered_domains)
-
-        break
-
-
-
+            # Make sure that the filtered domains are sorted
+            filtered_domains = insertion_sort(filtered_domains)
+            base_domain = filtered_domains[0]
+            base_domain_path = session.query(Screenshot).filter_by(site_id=base_domain).first().path
+            for i in range(1, len(filtered_domains)):
+                response = __determine_image_sim__(base_domain_path, session.query(Screenshot).filter_by(site_id=filtered_domains[i]).first().path)
+                parsed = json.loads(json.dumps(response))
+                distance = parsed['output']['distance']
+            break
 
     session.close()
     f.close()
@@ -402,5 +419,6 @@ For screenshots:
 """
 
 if __name__ == "__main__":
-    pass
-    # identify_layout_duplicates()
+    identify_layout_duplicates()
+
+
