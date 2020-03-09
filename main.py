@@ -266,8 +266,6 @@ If count is three, subdomain-domain
 """
 
 
-
-
 def __set_domain_keys__(delimited_list):
     domains = {}
     for site in delimited_list[1]:
@@ -290,6 +288,7 @@ def __set_domain_keys__(delimited_list):
         domains.update({key: []})
 
     return domains
+
 
 def __set_domain_values__(domains, delimited_list):
     for site in delimited_list[1]:
@@ -322,10 +321,12 @@ def insertion_sort(arr):
 
     return arr
 
+
 def identify_layout_duplicates():
     filename = f"id_layout_duplicates_{file_safe_timestamp()}.log"
     f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
     f.write(str(datetime.datetime.now()) + "\n\n")
+    f.write(f"Layout duplication identification function, using threshold {SIMILARITY_THRESHOLD} for distance in image similarity")
     session = Session()
 
     sites = session.query(Site).order_by(Site.host)
@@ -359,7 +360,6 @@ def identify_layout_duplicates():
           Continue through the elements until either there are no more similarities through image algo or until one element remains.
     """
     pre_filter_count = 0
-    post_filter_count = 0
     for domains in domains.values():
         pre_filter_count += len(domains)
         if len(domains) == 1:
@@ -378,19 +378,40 @@ def identify_layout_duplicates():
             filtered_domains = insertion_sort(filtered_domains)
             unique_domains.append(session.query(Site).filter_by(id=filtered_domains[0]).first().host)
             base_domain = filtered_domains[0]
+            print(f"Base domain {base_domain}\n")
+            f.write(f"Base domain {base_domain}\n")
             base_domain_path = session.query(Screenshot).filter_by(site_id=base_domain).first().path
             for i in range(1, len(filtered_domains)):
                 response = __determine_image_sim__(base_domain_path, session.query(Screenshot).filter_by(
                     site_id=filtered_domains[i]).first().path)
                 parsed = json.loads(json.dumps(response))
                 distance = parsed['output']['distance']
+                print(f"Similarity distance: {distance}\n")
+                f.write(f"Similarity distance: {distance}\n")
                 if int(distance) < int(SIMILARITY_THRESHOLD):
                     pass
                 else:
-                    unique_domains.append(session.query(Site).filter_by(id=filtered_domains[i]).first().host)
+                    host = session.query(Site).filter_by(id=filtered_domains[i]).first().host
+                    print(f"Appending host {host}\n")
+                    f.write(f"Appending host {host}\n")
+                    unique_domains.append(host)
+
     post_filter_count = len(unique_domains)
+    print(f"Pre filter count: {pre_filter_count}\n")
+    f.write(f"Pre filter count: {pre_filter_count}\n")
+    print(f"Post filter count: {post_filter_count}\n")
+    f.write(f"Post filter count: {post_filter_count}\n")
     session.close()
     f.close()
+
+    filename = f"unique_domains_{file_safe_timestamp()}.log"
+    f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
+    f.write(str(datetime.datetime.now()) + "\n\n")
+    f.writelines(unique_domains)
+    print(unique_domains)
+    f.close()
+    return unique_domains
+
 
 """
 To create a site object:
@@ -429,5 +450,3 @@ For screenshots:
 if __name__ == "__main__":
     pass
     # identify_layout_duplicates()
-
-
