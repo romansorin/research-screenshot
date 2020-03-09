@@ -178,7 +178,7 @@ def convert_parsed_to_site():
     session.close()
 
 
-def __image_sim__(path_one, path_two):
+def __determine_image_sim__(path_one, path_two):
     r = requests.post(
         "https://api.deepai.org/api/image-similarity",
         data={
@@ -338,12 +338,44 @@ def identify_layout_duplicates():
     Unique identification process:
     1. Run preliminary check; if the length of the values attached to the key is equal to one, then add that to unique domains, and move on to next element
     2. If the length of the values is greater than 1, run image similarity check
-        - Start at element of index 0 in the values. Compare that to element index + 1, and continue doing that. If their similarity threshold is less than 10-15, 
+        - Start at element of index 0 in the values. Compare that to element index + 1, and continue doing that.
+          If their similarity threshold is less than 10-15, keep the element with the higher ranking (site_id). Remove other element from array.
+          Move to next elements.
+          Continue through the elements until either there are no more similarities through image algo or until one element remains.
     """
 
+    for domains in domains.values():
+        if len(domains) == 1:
+            print(f"Unique domain {domains[0]}")
+            f.write(f"Unique domain {domains[0]}\n")
+            unique_domains.append(domains[0])
+        elif len(domains) == 0:
+            print("No domain found, skipping")
+            f.write("No domain found, skipping\n")
+        else:
+            filtered_domains = []
+            for i in range(len(domains)):
+                site1 = session.query(Site).filter_by(host=domains[i])
+                for j in range(i + 1, len(domains)):
+                    site2 = session.query(Site).filter_by(host=domains[j])
 
-    for domain in domains.values():
-        print(domain)
+                    site_ids = []
+                    paths = []
+
+                    site_ids.append(site1.id)
+                    site_ids.append(site2.id)
+
+                    screenshot1 = session.query(Screenshot).filter_by(site_id=site_ids[0])
+                    screenshot2 = session.query(Screenshot).filter_by(site_id=site_ids[1])
+
+                    paths.append(screenshot1.path)
+                    paths.append(screenshot2.path)
+
+                    response = __determine_image_sim__(paths[0], paths[1])
+                    if int(response['distance']) < 15:
+                        if screenshot1.site_id > screenshot2.site_id:
+                            filtered_domains.append(domains[i])
+
         break
 
 
