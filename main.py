@@ -427,6 +427,7 @@ For screenshots:
 """
 
 if __name__ == "__main__":
-    identify_layout_duplicates()
+    pass
+    # identify_layout_duplicates()
 
 
