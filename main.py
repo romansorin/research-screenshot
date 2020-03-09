@@ -187,7 +187,7 @@ def __image_sim__(path_one, path_two):
         },
         headers={'api-key': IMAGE_SIMILARITY_API_KEY}
     )
-    print(r.json())
+    return r.json()
 
 
 def process_sites():
@@ -308,6 +308,9 @@ def __set_domain_values__(domains, delimited_list):
 
 
 def identify_layout_duplicates():
+    filename = f"id_layout_duplicates_{file_safe_timestamp()}.log"
+    f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
+    f.write(str(datetime.datetime.now()) + "\n\n")
     session = Session()
 
     sites = session.query(Site).order_by(Site.host)
@@ -317,15 +320,35 @@ def identify_layout_duplicates():
         2: [],
         3: []
     }
+    f.write(f"Initialize list by delimiters: {list_by_delimiters}\n\n")
 
     for site in sites:
         delimiter_count = site.host.count('.')
         list_by_delimiters[delimiter_count].append(site.host)
+    f.write(f"Updated list by delimiters: {list_by_delimiters}\n\n")
 
     domains = __set_domain_keys__(list_by_delimiters)
+    f.write(f"Domains by keys: {domains}\n\n")
     domains = __set_domain_values__(domains, list_by_delimiters)
-    domains
+    f.write(f"Domains with values: {domains}\n\n")
+
+    unique_domains = []
+
+    """
+    Unique identification process:
+    1. Run preliminary check; if the length of the values attached to the key is equal to one, then add that to unique domains, and move on to next element
+    2. If the length of the values is greater than 1, run image similarity check
+        - Start at element of index 0 in the values. Compare that to element index + 1, and continue doing that. If their similarity threshold is less than 10-15, 
+    """
+
+
+    for domain in domains.values():
+        print(domain)
+        break
+
+
     session.close()
+    f.close()
 
 """
 To create a site object:
@@ -337,6 +360,9 @@ Given a parsed response in the form of fields(url):
   - Figure out an efficient way to sort and search the root domains
   - If root domain is equal to another root domain, flag it; eventually compare the screenshot of two sites; if they are below some threshold of similarity (such as 10) then only use the response that is ranked higher
   - set url = host
+  
+  
+  Comparison is only necessary when a key in the delimited list has a count of two or more
 """
 
 """
