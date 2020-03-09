@@ -362,6 +362,8 @@ def identify_layout_duplicates():
         break
 
 
+
+
     session.close()
     f.close()
 
@@ -400,4 +402,5 @@ For screenshots:
 """
 
 if __name__ == "__main__":
-    identify_layout_duplicates()
+    pass
+    # identify_layout_duplicates()
