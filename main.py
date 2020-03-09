@@ -1,6 +1,6 @@
 import datetime
 import json
-
+from tld import get_tld
 import requests
 
 from config.app import STORAGE_LOGS_PATH, QUERY_START_PATH
@@ -284,11 +284,37 @@ def identify_layout_duplicates():
 
     for site in list_by_delimiters[1]:
         domains.update({site.split('.')[0]: []})
-        domains[site.split('.')[0]].append(site)
-        break
 
-    print(domains)
-        # domains[site.host.]
+    for site in list_by_delimiters[2]:
+        tld = get_tld(site, fix_protocol = True)
+        if len(tld.split('.')) == 2:
+            domains.update({site.split('.')[0]: []})
+        else:
+            subdomain = site.split('.')[0]
+            domain = site.split('.')[1]
+            key = '.'.join([subdomain, domain])
+            domains.update({key: []})
+
+    for site in list_by_delimiters[3]:
+        subdomain = site.split('.')[0]
+        domain = site.split('.')[1]
+        key = '.'.join([subdomain, domain])
+        domains.update({key: []})
+
+
+    for site in list_by_delimiters[1]:
+        domains[site.split('.')[0]].append(site)
+
+    for site in list_by_delimiters[2]:
+        tld = get_tld(site, fix_protocol=True)
+        if len(tld.split('.')) == 2:
+            domains[site.split('.')[0]].append(site)
+        else:
+            domains['.'.join([site.split('.')[0], site.split('.')[1]])].append(site)
+
+    for site in list_by_delimiters[3]:
+        domains['.'.join([site.split('.')[0], site.split('.')[1]])].append(site)
+
     session.close()
 
 
