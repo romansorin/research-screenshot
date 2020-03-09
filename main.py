@@ -1,18 +1,19 @@
 import datetime
 import json
-from tld import get_tld
+
 import requests
+from tld import get_tld
 
 from config.app import STORAGE_LOGS_PATH, QUERY_START_PATH
-from config.openai import IMAGE_SIMILARITY_API_KEY
 from config.aws import HEADERS
+from config.openai import IMAGE_SIMILARITY_API_KEY, SIMILARITY_THRESHOLD
 from migrations.ParsedResponse import ParsedResponse
 from migrations.Response import Response
-from migrations.Site import Site
-from models.Screenshot import ScreenshotEnum, to_greyscale
 from migrations.Screenshot import Screenshot
-from models.Driver import Driver
+from migrations.Site import Site
 from models.Base import Base, Session, engine
+from models.Driver import Driver
+from models.Screenshot import ScreenshotEnum, to_greyscale
 
 
 def migrate_fresh():
@@ -32,7 +33,7 @@ DONE - 2. SELECT response FROM responses
  - Mark that query as parsed
  - Create a Site object from that
 
-3. Take screenshot of DataUrl from that query
+DONE - 3. Take screenshot of DataUrl from that query
  - Create Screenshot object linked to that site
  - Run RGB Screenshot object into greyscale conversion
 """
@@ -357,8 +358,10 @@ def identify_layout_duplicates():
           Move to next elements.
           Continue through the elements until either there are no more similarities through image algo or until one element remains.
     """
-
+    pre_filter_count = 0
+    post_filter_count = 0
     for domains in domains.values():
+        pre_filter_count += len(domains)
         if len(domains) == 1:
             print(f"Unique domain {domains[0]}")
             f.write(f"Unique domain {domains[0]}\n")
@@ -373,14 +376,19 @@ def identify_layout_duplicates():
 
             # Make sure that the filtered domains are sorted
             filtered_domains = insertion_sort(filtered_domains)
+            unique_domains.append(session.query(Site).filter_by(id=filtered_domains[0]).first().host)
             base_domain = filtered_domains[0]
             base_domain_path = session.query(Screenshot).filter_by(site_id=base_domain).first().path
             for i in range(1, len(filtered_domains)):
-                response = __determine_image_sim__(base_domain_path, session.query(Screenshot).filter_by(site_id=filtered_domains[i]).first().path)
+                response = __determine_image_sim__(base_domain_path, session.query(Screenshot).filter_by(
+                    site_id=filtered_domains[i]).first().path)
                 parsed = json.loads(json.dumps(response))
                 distance = parsed['output']['distance']
-            break
-
+                if int(distance) < int(SIMILARITY_THRESHOLD):
+                    pass
+                else:
+                    unique_domains.append(session.query(Site).filter_by(id=filtered_domains[i]).first().host)
+    post_filter_count = len(unique_domains)
     session.close()
     f.close()
 
