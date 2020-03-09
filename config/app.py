@@ -8,6 +8,7 @@ SCREENSHOT_RGB_PATH = f'{SCREENSHOT_ROOT_PATH}/original'
 SCREENSHOT_GREY_PATH = f'{SCREENSHOT_ROOT_PATH}/greyscale'
 
 CLUSTER_DATA_PATH = './storage/cluster_data'
+CLUSTER_OUTPUT_PATH = './storage/cluster_output'
 
 ################################
 # Query tracking configuration #
