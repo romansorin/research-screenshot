@@ -355,9 +355,9 @@ def identify_layout_duplicates():
         else:
             filtered_domains = []
             for i in range(len(domains)):
-                site1 = session.query(Site).filter_by(host=domains[i])
+                site1 = session.query(Site).filter_by(host=domains[i]).first()
                 for j in range(i + 1, len(domains)):
-                    site2 = session.query(Site).filter_by(host=domains[j])
+                    site2 = session.query(Site).filter_by(host=domains[j]).first()
 
                     site_ids = []
                     paths = []
@@ -365,19 +365,14 @@ def identify_layout_duplicates():
                     site_ids.append(site1.id)
                     site_ids.append(site2.id)
 
-                    screenshot1 = session.query(Screenshot).filter_by(site_id=site_ids[0])
-                    screenshot2 = session.query(Screenshot).filter_by(site_id=site_ids[1])
+                    screenshot1 = session.query(Screenshot).filter_by(site_id=site_ids[0]).first()
+                    screenshot2 = session.query(Screenshot).filter_by(site_id=site_ids[1]).first()
 
                     paths.append(screenshot1.path)
                     paths.append(screenshot2.path)
 
-                    response = __determine_image_sim__(paths[0], paths[1])
-                    if int(response['distance']) < 15:
-                        if screenshot1.site_id > screenshot2.site_id:
-                            filtered_domains.append(domains[i])
 
-        break
-
+                    break
 
     session.close()
     f.close()
@@ -417,4 +412,5 @@ For screenshots:
 """
 
 if __name__ == "__main__":
-    identify_layout_duplicates()
+    pass
+    # identify_layout_duplicates()
