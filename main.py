@@ -265,6 +265,48 @@ If count is three, subdomain-domain
 """
 
 
+
+
+def __set_domain_keys__(delimited_list):
+    domains = {}
+    for site in delimited_list[1]:
+        domains.update({site.split('.')[0]: []})
+
+    for site in delimited_list[2]:
+        tld = get_tld(site, fix_protocol=True)
+        if len(tld.split('.')) == 2:
+            domains.update({site.split('.')[0]: []})
+        else:
+            subdomain = site.split('.')[0]
+            domain = site.split('.')[1]
+            key = '.'.join([subdomain, domain])
+            domains.update({key: []})
+
+    for site in delimited_list[3]:
+        subdomain = site.split('.')[0]
+        domain = site.split('.')[1]
+        key = '.'.join([subdomain, domain])
+        domains.update({key: []})
+
+    return domains
+
+def __set_domain_values__(domains, delimited_list):
+    for site in delimited_list[1]:
+        domains[site.split('.')[0]].append(site)
+
+    for site in delimited_list[2]:
+        tld = get_tld(site, fix_protocol=True)
+        if len(tld.split('.')) == 2:
+            domains[site.split('.')[0]].append(site)
+        else:
+            domains['.'.join([site.split('.')[0], site.split('.')[1]])].append(site)
+
+    for site in delimited_list[3]:
+        domains['.'.join([site.split('.')[0], site.split('.')[1]])].append(site)
+
+    return domains
+
+
 def identify_layout_duplicates():
     session = Session()
 
@@ -276,47 +318,14 @@ def identify_layout_duplicates():
         3: []
     }
 
-    domains = {}
-
     for site in sites:
         delimiter_count = site.host.count('.')
         list_by_delimiters[delimiter_count].append(site.host)
 
-    for site in list_by_delimiters[1]:
-        domains.update({site.split('.')[0]: []})
-
-    for site in list_by_delimiters[2]:
-        tld = get_tld(site, fix_protocol = True)
-        if len(tld.split('.')) == 2:
-            domains.update({site.split('.')[0]: []})
-        else:
-            subdomain = site.split('.')[0]
-            domain = site.split('.')[1]
-            key = '.'.join([subdomain, domain])
-            domains.update({key: []})
-
-    for site in list_by_delimiters[3]:
-        subdomain = site.split('.')[0]
-        domain = site.split('.')[1]
-        key = '.'.join([subdomain, domain])
-        domains.update({key: []})
-
-
-    for site in list_by_delimiters[1]:
-        domains[site.split('.')[0]].append(site)
-
-    for site in list_by_delimiters[2]:
-        tld = get_tld(site, fix_protocol=True)
-        if len(tld.split('.')) == 2:
-            domains[site.split('.')[0]].append(site)
-        else:
-            domains['.'.join([site.split('.')[0], site.split('.')[1]])].append(site)
-
-    for site in list_by_delimiters[3]:
-        domains['.'.join([site.split('.')[0], site.split('.')[1]])].append(site)
-
+    domains = __set_domain_keys__(list_by_delimiters)
+    domains = __set_domain_values__(domains, list_by_delimiters)
+    domains
     session.close()
-
 
 """
 To create a site object:
