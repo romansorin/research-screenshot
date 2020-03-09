@@ -407,11 +407,25 @@ def identify_layout_duplicates():
     filename = f"unique_domains_{file_safe_timestamp()}.log"
     f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
     f.write(str(datetime.datetime.now()) + "\n\n")
-    f.writelines(unique_domains)
+    for d in unique_domains:
+        f.write(f"{d}\n")
     print(unique_domains)
     f.close()
     return unique_domains
 
+def verify_db_integrity():
+    session = Session()
+    sites = session.query(Site).all()
+    for site in sites:
+        result = session.query(Screenshot).filter_by(site_id=site.id).first()
+        if not result:
+            print(site.id)
+
+    screenshots = session.query(Screenshot).filter_by(type=ScreenshotEnum.GREYSCALE)
+    for screenshot in screenshots:
+        result = session.query(Site).filter_by(id=screenshot.site_id).first()
+        if not result:
+            print(screenshot.id)
 
 """
 To create a site object:
@@ -449,4 +463,3 @@ For screenshots:
 
 if __name__ == "__main__":
     pass
-    # identify_layout_duplicates()
