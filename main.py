@@ -354,27 +354,10 @@ def identify_layout_duplicates():
             f.write("No domain found, skipping\n")
         else:
             filtered_domains = []
-            for i in range(len(domains)):
-                site1 = session.query(Site).filter_by(host=domains[i])
-                for j in range(i + 1, len(domains)):
-                    site2 = session.query(Site).filter_by(host=domains[j])
+            for domain in domains:
+                filtered_domains.append(session.query(Site).filter_by(host=domain).first())
 
-                    site_ids = []
-                    paths = []
-
-                    site_ids.append(site1.id)
-                    site_ids.append(site2.id)
-
-                    screenshot1 = session.query(Screenshot).filter_by(site_id=site_ids[0])
-                    screenshot2 = session.query(Screenshot).filter_by(site_id=site_ids[1])
-
-                    paths.append(screenshot1.path)
-                    paths.append(screenshot2.path)
-
-                    response = __determine_image_sim__(paths[0], paths[1])
-                    if int(response['distance']) < 15:
-                        if screenshot1.site_id > screenshot2.site_id:
-                            filtered_domains.append(domains[i])
+            print(filtered_domains)
 
         break
 
