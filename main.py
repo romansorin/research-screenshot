@@ -272,23 +272,31 @@ def __set_domain_keys__(delimited_list):
 def find_dimension_constraints():
     height = 50000
     width = 50000
-
+    filename = f"crop_{file_safe_timestamp()}.log"
+    f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
+    f.write(str(datetime.datetime.now()) + "\n\n")
+    f.write(f"Initializing constraints using dimensions [height: {height}] and [width: {width}]\n")
     for image in os.listdir(CLUSTER_DATA_PATH):
         if image.endswith('.png'):
             image_name = image
+            f.write(f"Checking screenshot {image_name}\n")
             image = cv2.imread(f"{CLUSTER_DATA_PATH}/{image_name}")
 
             h = image.shape[0]
             w = image.shape[1]
-            print(h,w)
-            if h < 700:
-                print(image_name)
+            f.write(f"Height: {h}, width: {w}\n")
             if h < height:
+                f.write(
+                    f"{image_name} height is smaller than maximum constraint {height}, setting new constraint to {h}\n")
                 height = h
             if w < width:
+                f.write(
+                    f"{image_name} height is smaller than maximum constraint {width}, setting new constraint to {w}\n")
                 width = w
 
     print(height, width)
+    f.write(f"Height: {height}, width: {height}")
+    f.close()
 
 
 def set_image_dimensions():
@@ -313,6 +321,7 @@ def set_image_dimensions():
             cv2.imwrite(f"{CLUSTER_DATA_PATH}/{image_name}", image)
             f.write(f"Finished {image_name} \n\n")
     f.close()
+
 
 def __set_domain_values__(domains, delimited_list):
     for site in delimited_list[1]:
@@ -472,4 +481,4 @@ def copy_unique_screenshots():
 
 
 if __name__ == "__main__":
-    find_dimension_constraints()
+    pass
