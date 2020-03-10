@@ -12,3 +12,4 @@ class Response(Base):
     response = Column(JSON, nullable=False)
     parsed = Column(Boolean, default=False)
     children = relationship('ParsedResponse', backref='response', cascade='all,delete')
+

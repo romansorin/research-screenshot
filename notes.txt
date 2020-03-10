@@ -1,5 +1,3 @@
-
-"""
 To create a site object:
 fields(name, host)
 
@@ -12,9 +10,6 @@ Given a parsed response in the form of fields(url):
 
 
   Comparison is only necessary when a key in the delimited list has a count of two or more
-"""
-
-"""
 Screenshot
 
 - Go to failed and exceeded jobs; take manual shots if necessary
@@ -22,21 +17,16 @@ Screenshot
 Then run RGB->greyscale conversion
 Then run image similarity algorithm
 ^^ Processing checks
-"""
-
-"""
 For screenshots:
 : foreach sites as site :
   - Navigate to site.host
   - Take screenshot (fullpage)
   - Convert to greyscale rgb
   - Make any comparisons as necessary
-"""
 
 # Next step: Parse unique domains log, foreach domain copy greyscale image (do a join) to cluster_data folder
 # Also import clustering
 
-    """
     Unique identification process:
     1. Run preliminary check; if the length of the values attached to the key is equal to one, then add that to unique domains, and move on to next element
     2. If the length of the values is greater than 1, run image similarity check
@@ -44,9 +34,6 @@ For screenshots:
           If their similarity threshold is less than 10-15, keep the element with the higher ranking (site_id). Remove other element from array.
           Move to next elements.
           Continue through the elements until either there are no more similarities through image algo or until one element remains.
-    """
-
-"""
 General URL format:
 <domain_name>.<tld>
 
@@ -61,10 +48,6 @@ If count is only one, then the domain can be stored under that key in some array
 If count is two, check for presence of TLD; if TLD is of last array element, then subdomain exists; else sort by domain name
 If count is three, subdomain-domain
 
-"""
-
-
-"""
 DONE - 1. Query AWS API
  - Add response to database
  - Update start variable (found in plaintext txt)
@@ -77,9 +60,6 @@ DONE - 2. SELECT response FROM responses
 DONE - 3. Take screenshot of DataUrl from that query
  - Create Screenshot object linked to that site
  - Run RGB Screenshot object into greyscale conversion
-"""
-
-"""
 https://github.com/rohanbaisantry/image-clustering
 https://github.com/asselinpaul/ImageSeg-KMeans
 https://github.com/abhijeet3922/Image-compression-with-Kmeans-clustering
@@ -93,9 +73,6 @@ https://github.com/zegami/image-similarity-clustering
 https://github.com/Wrinth/Image-Compression-with-K-Means-Clustering
 https://github.com/elcorto/imagecluster
 https://github.com/beleidy/unsupervised-image-clustering
-"""
-
-"""
 
 - extract name of site from exploded url
 
@@ -104,7 +81,9 @@ for cases where domain names are the same:
 - two options for handling duplicates root domains, but different tlds:
     1. keep organizational tld, filter/pop geographical tlds
     2. run another hidden layer / image processing step for image similarity; if 95%+ similar
-"""
 
 
 # TODO: Add method documentation
+
+
+foreach image in cluster_data: crop to some num

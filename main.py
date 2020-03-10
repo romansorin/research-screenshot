@@ -1,7 +1,9 @@
 import datetime
 import json
+import os
 from shutil import copyfile
 
+import cv2
 import requests
 from tld import get_tld
 
@@ -243,9 +245,6 @@ def convert_site_colorspace():
     session.close()
 
 
-
-
-
 def __set_domain_keys__(delimited_list):
     domains = {}
     for site in delimited_list[1]:
@@ -269,6 +268,51 @@ def __set_domain_keys__(delimited_list):
 
     return domains
 
+
+def find_dimension_constraints():
+    height = 50000
+    width = 50000
+
+    for image in os.listdir(CLUSTER_DATA_PATH):
+        if image.endswith('.png'):
+            image_name = image
+            image = cv2.imread(f"{CLUSTER_DATA_PATH}/{image_name}")
+
+            h = image.shape[0]
+            w = image.shape[1]
+            print(h,w)
+            if h < 700:
+                print(image_name)
+            if h < height:
+                height = h
+            if w < width:
+                width = w
+
+    print(height, width)
+
+
+def set_image_dimensions():
+    height = 1440
+    width = 2560
+    filename = f"crop_{file_safe_timestamp()}.log"
+    f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
+    f.write(str(datetime.datetime.now()) + "\n\n")
+    f.write(f"Using dimensions [height: {height}] and [width: {width}]\n")
+    for image in os.listdir(CLUSTER_DATA_PATH):
+        if image.endswith('.png'):
+            image_name = image
+            f.write(f"Checking screenshot {image_name}")
+            image = cv2.imread(f"{CLUSTER_DATA_PATH}/{image_name}")
+            if image.shape[0] > height:
+                f.write(f"{image_name} exceeds height, cropping\n")
+                image = image[0:height, 0:image.shape[1]]
+            if image.shape[1] > width:
+                f.write(f"{image_name} exceeds width, cropping\n")
+                image = image[0:image.shape[0], 0:width]
+
+            cv2.imwrite(f"{CLUSTER_DATA_PATH}/{image_name}", image)
+            f.write(f"Finished {image_name} \n\n")
+    f.close()
 
 def __set_domain_values__(domains, delimited_list):
     for site in delimited_list[1]:
@@ -427,6 +471,5 @@ def copy_unique_screenshots():
     log.close()
 
 
-
 if __name__ == "__main__":
-    pass
+    find_dimension_constraints()
