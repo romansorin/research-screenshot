@@ -1,0 +1,16 @@
+2020-03-10 00:36:14.256126
+
+
+
+ 		 START
+
+
+ output folders created.
+ Object of class "Clustering" has been initialized.
+ 908 images from the ./storage/cluster_data folder have been loaded in a random order.
+ Clustering complete! 
+
+ Clusters and the respective images are stored in the "./storage/cluster_output" folder.
+
+		 END
+
