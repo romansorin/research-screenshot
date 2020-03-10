@@ -86,4 +86,3 @@ for cases where domain names are the same:
 # TODO: Add method documentation
 
 
-foreach image in cluster_data: crop to some num

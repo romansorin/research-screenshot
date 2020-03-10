@@ -1,29 +1,30 @@
 """
 Credit: https://github.com/rohanbaisantry/image-clustering
+
+Modified by Roman Sorin <roman@romansorin.com> [https://github.com/romansorin] for use in 2019-2020 research study
 """
 
-import random
-import cv2
 import os
-import sys
+import random
 import shutil
+import sys
+
+import cv2
+import keras
+import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
-import numpy as np
-import keras
+
 from config.app import CLUSTER_DATA_PATH, CLUSTER_OUTPUT_PATH
 
 
 class Clustering:
     def __init__(self, folder_path="data", n_clusters=10, max_examples=None, use_imagenets=False, use_pca=False):
         paths = os.listdir(folder_path)
-        if max_examples == None:
-            self.max_examples = len(paths)
-        else:
-            if max_examples > len(paths):
-                self.max_examples = len(paths)
-            else:
-                self.max_examples = max_examples
+
+        self.max_examples = len(paths) if max_examples is None else len(paths) if max_examples > len(
+            paths) else max_examples
+
         self.n_clusters = n_clusters
         self.folder_path = folder_path
         random.shuffle(paths)
@@ -31,53 +32,60 @@ class Clustering:
         self.use_imagenets = use_imagenets
         self.use_pca = use_pca
         del paths
+
         try:
             shutil.rmtree(CLUSTER_OUTPUT_PATH)
         except FileExistsError:
             pass
+
         print("\n output folders created.")
         os.makedirs(CLUSTER_OUTPUT_PATH)
+
         for i in range(self.n_clusters):
-            os.makedirs(f"{CLUSTER_OUTPUT_PATH}/cluster" + str(i))
-        print("\n Object of class \"image_clustering\" has been initialized.")
+            os.makedirs(f"{CLUSTER_OUTPUT_PATH}/cluster{str(i)}")
+
+        print("\n Object of class \"Clustering\" has been initialized.")
 
     def load_images(self):
         self.images = []
+
         for image in self.image_paths:
             self.images.append(cv2.cvtColor(cv2.resize(cv2.imread(
                 self.folder_path + "/" + image), (224, 224)), cv2.COLOR_BGR2RGB))
+
         self.images = np.float32(self.images).reshape(len(self.images), -1)
         self.images /= 255
-        print("\n " + str(self.max_examples) + " images from the \"" +
-              self.folder_path + "\" folder have been loaded in a random order.")
+
+        print(
+            f"\n {str(self.max_examples)} images from the {self.folder_path} folder have been loaded in a random order.")
 
     def get_new_imagevectors(self):
         if not self.use_imagenets:
             self.images_new = self.images
         else:
             if use_imagenets.lower() == "vgg16":
-                model1 = keras.applications.vgg16.VGG16(
+                model = keras.applications.vgg16.VGG16(
                     include_top=False, weights="imagenet", input_shape=(224, 224, 3))
             elif use_imagenets.lower() == "vgg19":
-                model1 = keras.applications.vgg19.VGG19(
+                model = keras.applications.vgg19.VGG19(
                     include_top=False, weights="imagenet", input_shape=(224, 224, 3))
             elif use_imagenets.lower() == "resnet50":
-                model1 = keras.applications.resnet50.ResNet50(
+                model = keras.applications.resnet50.ResNet50(
                     include_top=False, weights="imagenet", input_shape=(224, 224, 3))
             elif use_imagenets.lower() == "xception":
-                model1 = keras.applications.xception.Xception(
+                model = keras.applications.xception.Xception(
                     include_top=False, weights='imagenet', input_shape=(224, 224, 3))
             elif use_imagenets.lower() == "inceptionv3":
                 keras.applications.inception_v3.InceptionV3(
                     include_top=False, weights='imagenet', input_shape=(224, 224, 3))
             elif use_imagenets.lower() == "inceptionresnetv2":
-                model1 = keras.applications.inception_resnet_v2.InceptionResNetV2(
+                model = keras.applications.inception_resnet_v2.InceptionResNetV2(
                     include_top=False, weights='imagenet', input_shape=(224, 224, 3))
             elif use_imagenets.lower() == "densenet":
-                model1 = keras.applications.densenet.DenseNet201(
+                model = keras.applications.densenet.DenseNet201(
                     include_top=False, weights='imagenet', input_shape=(224, 224, 3))
             elif use_imagenets.lower() == "mobilenetv2":
-                model1 = keras.applications.mobilenetv2.MobileNetV2(input_shape=(
+                model = keras.applications.mobilenetv2.MobileNetV2(input_shape=(
                     224, 224, 3), alpha=1.0, depth_multiplier=1, include_top=False, weights='imagenet', pooling=None)
             else:
                 print(
@@ -86,7 +94,7 @@ class Clustering:
                     "\"mobilenetv2\" ] or False")
                 sys.exit()
 
-            pred = model1.predict(self.images)
+            pred = model.predict(self.images)
             images_temp = pred.reshape(self.images.shape[0], -1)
             if not self.use_pca:
                 self.images_new = images_temp
@@ -100,31 +108,24 @@ class Clustering:
         model.fit(self.images_new)
         predictions = model.predict(self.images_new)
         for i in range(self.max_examples):
-            shutil.copy2(self.folder_path + "/" +
-                         self.image_paths[i], f"{CLUSTER_OUTPUT_PATH}/cluster" + str(predictions[i]))
-        print("\n Clustering complete! \n\n Clusters and the respective images are stored in the \"output\" folder.")
+            shutil.copy2(f"{self.folder_path}/{self.image_paths[i]}",
+                         f"{CLUSTER_OUTPUT_PATH}/cluster{str(predictions[i])}")
+        print(
+            f"\n Clustering complete! \n\n Clusters and the respective images are stored in the \"{CLUSTER_OUTPUT_PATH}\" folder.")
 
 
 if __name__ == "__main__":
-
     print("\n\n \t\t START\n\n")
 
-    number_of_clusters = 4  # cluster names will be 0 to number_of_clusters-1
-
-    # path of the folder that contains the images to be considered for the clustering (The folder must contain only image files)
+    number_of_clusters = 4
     data_path = CLUSTER_DATA_PATH
-
-    max_examples = None  # number of examples to use, if "None" all of the images will be taken into consideration for the clustering
-    # If the value is greater than the number of images present  in the "data_path" folder, it will use all the images and change the value of this variable to the number of images available in the "data_path" folder.
-
+    max_examples = None
     use_imagenets = False
-    # choose from: "Xception", "VGG16", "VGG19", "ResNet50", "InceptionV3", "InceptionResNetV2", "DenseNet", "MobileNetV2" and "False" -> Default is: False
-    # you have to use the correct spelling! (case of the letters are irrelevant as the lower() function has been used)
 
-    if use_imagenets == False:
+    if not use_imagenets:
         use_pca = False
     else:
-        use_pca = False  # Make it True if you want to use PCA for dimentionality reduction -> Default is: False
+        use_pca = False
 
     temp = Clustering(data_path, number_of_clusters,
                       max_examples, use_imagenets, use_pca)
