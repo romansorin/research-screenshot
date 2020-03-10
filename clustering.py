@@ -14,12 +14,17 @@ import keras
 import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
-
-from config.app import CLUSTER_DATA_PATH, CLUSTER_OUTPUT_PATH
+from main import file_safe_timestamp
+import datetime
+from config.app import CLUSTER_DATA_PATH, CLUSTER_OUTPUT_PATH, STORAGE_LOGS_PATH
 
 
 class Clustering:
     def __init__(self, folder_path="data", n_clusters=10, max_examples=None, use_imagenets=False, use_pca=False):
+        filename = f"clustering_{file_safe_timestamp()}.log"
+        self.file = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
+        self.file.write(str(datetime.datetime.now()) + "\n\n")
+        self.file.write("\n\n \t\t START\n\n")
         paths = os.listdir(folder_path)
 
         self.max_examples = len(paths) if max_examples is None else len(paths) if max_examples > len(
@@ -39,24 +44,29 @@ class Clustering:
             pass
 
         print("\n output folders created.")
+        self.file.write("\n output folders created.")
         os.makedirs(CLUSTER_OUTPUT_PATH)
 
         for i in range(self.n_clusters):
             os.makedirs(f"{CLUSTER_OUTPUT_PATH}/cluster{str(i)}")
 
         print("\n Object of class \"Clustering\" has been initialized.")
+        self.file.write("\n Object of class \"Clustering\" has been initialized.")
 
     def load_images(self):
         self.images = []
 
         for image in self.image_paths:
-            self.images.append(cv2.cvtColor(cv2.resize(cv2.imread(
-                self.folder_path + "/" + image), (224, 224)), cv2.COLOR_BGR2RGB))
+            if image.endswith('.png'):
+                self.images.append(cv2.cvtColor(cv2.resize(cv2.imread(
+                    f"{self.folder_path}/{image}"), (224, 224)), cv2.COLOR_BGR2RGB))
 
         self.images = np.float32(self.images).reshape(len(self.images), -1)
         self.images /= 255
 
         print(
+            f"\n {str(self.max_examples)} images from the {self.folder_path} folder have been loaded in a random order.")
+        self.file.write(
             f"\n {str(self.max_examples)} images from the {self.folder_path} folder have been loaded in a random order.")
 
     def get_new_imagevectors(self):
@@ -92,6 +102,11 @@ class Clustering:
                     "\n\n Please use one of the following keras applications only [ \"vgg16\", \"vgg19\", "
                     "\"resnet50\", \"xception\", \"inceptionv3\", \"inceptionresnetv2\", \"densenet\", "
                     "\"mobilenetv2\" ] or False")
+                self.file.write(
+                    "\n\n Please use one of the following keras applications only [ \"vgg16\", \"vgg19\", "
+                    "\"resnet50\", \"xception\", \"inceptionv3\", \"inceptionresnetv2\", \"densenet\", "
+                    "\"mobilenetv2\" ] or False")
+                self.file.close()
                 sys.exit()
 
             pred = model.predict(self.images)
@@ -112,6 +127,10 @@ class Clustering:
                          f"{CLUSTER_OUTPUT_PATH}/cluster{str(predictions[i])}")
         print(
             f"\n Clustering complete! \n\n Clusters and the respective images are stored in the \"{CLUSTER_OUTPUT_PATH}\" folder.")
+        self.file.write(
+            f"\n Clustering complete! \n\n Clusters and the respective images are stored in the \"{CLUSTER_OUTPUT_PATH}\" folder.")
+        self.file.write("\n\n\t\t END\n\n")
+        self.file.close()
 
 
 if __name__ == "__main__":
@@ -127,10 +146,10 @@ if __name__ == "__main__":
     else:
         use_pca = False
 
-    temp = Clustering(data_path, number_of_clusters,
+    kmeans = Clustering(data_path, number_of_clusters,
                       max_examples, use_imagenets, use_pca)
-    temp.load_images()
-    temp.get_new_imagevectors()
-    temp.clustering()
+    kmeans.load_images()
+    kmeans.get_new_imagevectors()
+    kmeans.clustering()
 
     print("\n\n\t\t END\n\n")
