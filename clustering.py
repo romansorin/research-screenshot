@@ -1,5 +1,7 @@
+"""
+Credit: https://github.com/rohanbaisantry/image-clustering
+"""
 
-# Imports
 import random
 import cv2
 import os
@@ -11,8 +13,8 @@ import numpy as np
 import keras
 from config.app import CLUSTER_DATA_PATH, CLUSTER_OUTPUT_PATH
 
-class image_clustering:
 
+class Clustering:
     def __init__(self, folder_path="data", n_clusters=10, max_examples=None, use_imagenets=False, use_pca=False):
         paths = os.listdir(folder_path)
         if max_examples == None:
@@ -50,7 +52,7 @@ class image_clustering:
               self.folder_path + "\" folder have been loaded in a random order.")
 
     def get_new_imagevectors(self):
-        if self.use_imagenets == False:
+        if not self.use_imagenets:
             self.images_new = self.images
         else:
             if use_imagenets.lower() == "vgg16":
@@ -79,12 +81,14 @@ class image_clustering:
                     224, 224, 3), alpha=1.0, depth_multiplier=1, include_top=False, weights='imagenet', pooling=None)
             else:
                 print(
-                    "\n\n Please use one of the following keras applications only [ \"vgg16\", \"vgg19\", \"resnet50\", \"xception\", \"inceptionv3\", \"inceptionresnetv2\", \"densenet\", \"mobilenetv2\" ] or False")
+                    "\n\n Please use one of the following keras applications only [ \"vgg16\", \"vgg19\", "
+                    "\"resnet50\", \"xception\", \"inceptionv3\", \"inceptionresnetv2\", \"densenet\", "
+                    "\"mobilenetv2\" ] or False")
                 sys.exit()
 
             pred = model1.predict(self.images)
             images_temp = pred.reshape(self.images.shape[0], -1)
-            if self.use_pca == False:
+            if not self.use_pca:
                 self.images_new = images_temp
             else:
                 model2 = PCA(n_components=None, random_state=728)
@@ -105,7 +109,7 @@ if __name__ == "__main__":
 
     print("\n\n \t\t START\n\n")
 
-    number_of_clusters = 4 # cluster names will be 0 to number_of_clusters-1
+    number_of_clusters = 4  # cluster names will be 0 to number_of_clusters-1
 
     # path of the folder that contains the images to be considered for the clustering (The folder must contain only image files)
     data_path = CLUSTER_DATA_PATH
@@ -120,10 +124,10 @@ if __name__ == "__main__":
     if use_imagenets == False:
         use_pca = False
     else:
-        use_pca = False  # Make it True if you want to use PCA for dimentionaity reduction -> Default is: False
+        use_pca = False  # Make it True if you want to use PCA for dimentionality reduction -> Default is: False
 
-    temp = image_clustering(data_path, number_of_clusters,
-                            max_examples, use_imagenets, use_pca)
+    temp = Clustering(data_path, number_of_clusters,
+                      max_examples, use_imagenets, use_pca)
     temp.load_images()
     temp.get_new_imagevectors()
     temp.clustering()

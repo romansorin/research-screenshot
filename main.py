@@ -18,70 +18,53 @@ from models.Screenshot import ScreenshotEnum, to_greyscale
 
 
 def migrate_fresh():
+    """
+    Drop and create all database tables as defined by imported migrations
+
+    :return: None
+    """
     Base.metadata.drop_all(engine)
     print("Dropped tables")
     Base.metadata.create_all(engine)
     print("Created tables")
 
 
-"""
-DONE - 1. Query AWS API
- - Add response to database
- - Update start variable (found in plaintext txt)
-
-DONE - 2. SELECT response FROM responses
- - Clean up each result: structure: Ats->Results->Result->Alexa->TopSites->Country->Sites->Site[Object]
- - Mark that query as parsed
- - Create a Site object from that
-
-DONE - 3. Take screenshot of DataUrl from that query
- - Create Screenshot object linked to that site
- - Run RGB Screenshot object into greyscale conversion
-"""
-
-"""
-https://github.com/rohanbaisantry/image-clustering
-https://github.com/asselinpaul/ImageSeg-KMeans
-https://github.com/abhijeet3922/Image-compression-with-Kmeans-clustering
-https://shirinsplayground.netlify.com/2018/10/keras_fruits_cluster/
-https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
-https://keras.io/applications/
-https://stackoverflow.com/questions/39123421/image-clustering-by-its-similarity-in-python
-https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_ml/py_kmeans/py_kmeans_opencv/py_kmeans_opencv.html
-https://github.com/eriklindernoren/ML-From-Scratch
-https://github.com/zegami/image-similarity-clustering
-https://github.com/Wrinth/Image-Compression-with-K-Means-Clustering
-https://github.com/elcorto/imagecluster
-https://github.com/beleidy/unsupervised-image-clustering
-"""
-
-"""
-
-- extract name of site from exploded url
-
-for cases where domain names are the same:
-- keep subdomains even if root domain is same
-- two options for handling duplicates root domains, but different tlds:
-    1. keep organizational tld, filter/pop geographical tlds
-    2. run another hidden layer / image processing step for image similarity; if 95%+ similar
-"""
-
-
-# TODO: Add method documentation
-
 def query_api_url(count, start):
+    """
+    Queries the Alexa API for top sites with a global scope
+
+    :param count: Number of sites to return in a response
+    :param start: Index of site to start from according to the Alexa API
+    :return: json
+    """
     return f'https://ats.api.alexa.com/api?Action=Topsites&Count={count}&ResponseGroup=Country&Start={start}&Output=json'
 
 
 def parse_response(data):
+    """
+    Parse response and return json array of sites + associated data
+
+    :param data: json data returned by Alexa API, such as that returned in fn(query_api_url)
+    :return: json
+    """
     return data['Ats']['Results']['Result']['Alexa']['TopSites']['Country']['Sites']['Site']
 
 
 def make_api_request(url):
+    """AWS request helper function
+
+    :param url: URL to query from Alexa
+    :return: response
+    """
     return requests.get(url, headers=HEADERS)
 
 
-def log_response(data):
+def log_query_response(data):
+    """
+    Write query response from Alexa to log file
+    :param data: json data (response) from request
+    :return: None
+    """
     filename = f"query_{file_safe_timestamp()}.log"
     f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
     f.write(str(datetime.datetime.now()) + "\n\n")
@@ -90,6 +73,11 @@ def log_response(data):
 
 
 def file_safe_timestamp():
+    """
+    Get the current timestamp that can be written as part of a file name
+
+    :return: str
+    """
     return str(datetime.datetime.now()).replace(" ", "_").replace(".", "-").replace(":", "-")
 
 
@@ -107,7 +95,7 @@ def collect_aws_data():
             break
         aws_request_url = query_api_url(start=query_start, count=interval)
         aws_res = make_api_request(aws_request_url)
-        log_response(aws_res.json())
+        log_query_response(aws_res.json())
         response = Response(query=aws_request_url, response=aws_res.json())
         session.add(response)
         session.commit()
@@ -224,6 +212,7 @@ def convert_site_colorspace():
     filename = f"convert_{file_safe_timestamp()}.log"
     f = open(f"{STORAGE_LOGS_PATH}/{filename}", "x")
     f.write(str(datetime.datetime.now()) + "\n\n")
+
     session = Session()
     screenshots = session.query(Screenshot).filter_by(type=ScreenshotEnum.RGB)
     for screenshot in screenshots:
@@ -233,38 +222,28 @@ def convert_site_colorspace():
             if sc.type == ScreenshotEnum.GREYSCALE:
                 print('Found greyscale version of screenshot.')
                 f.write(f"Found greyscale version of screenshot. Skipping (id={sc.id})\n\n")
+
                 flag = True
         if flag:
             pass
         else:
             site_name = session.query(Site).get(screenshot.site_id).name
+
             print(f"Converting screenshot of site {site_name} from RGB to GREYSCALE")
             f.write(f"Converting screenshot of site {site_name} from RGB to GREYSCALE \n")
+
             path = to_greyscale(screenshot.path, site_name)
             greyscale_screenshot = Screenshot(site_id=screenshot.site_id, type=ScreenshotEnum.GREYSCALE, path=path)
             session.add(greyscale_screenshot)
             session.commit()
+
             print(f"Finished conversion of {site_name} from RGB to GREYSCALE")
             f.write(f"Finished conversion of {site_name} from RGB to GREYSCALE \n\n")
+
     session.close()
 
 
-"""
-General URL format:
-<domain_name>.<tld>
 
-
-Domain edge cases:
-Case one: <domain_name>.<tld> - count = 1
-Case two: <subdomain_name>.<domain_name>.<tld> - count = 2
-Case three: <subdomain_name>.<domain_name>.<tld>.<geo> - count = 3
-Case four: <domain_name>.<tld>.<geo> - count = 2
-
-If count is only one, then the domain can be stored under that key in some array using array element 0.
-If count is two, check for presence of TLD; if TLD is of last array element, then subdomain exists; else sort by domain name
-If count is three, subdomain-domain
-
-"""
 
 
 def __set_domain_keys__(delimited_list):
@@ -352,15 +331,6 @@ def identify_layout_duplicates():
 
     unique_domains = []
 
-    """
-    Unique identification process:
-    1. Run preliminary check; if the length of the values attached to the key is equal to one, then add that to unique domains, and move on to next element
-    2. If the length of the values is greater than 1, run image similarity check
-        - Start at element of index 0 in the values. Compare that to element index + 1, and continue doing that.
-          If their similarity threshold is less than 10-15, keep the element with the higher ranking (site_id). Remove other element from array.
-          Move to next elements.
-          Continue through the elements until either there are no more similarities through image algo or until one element remains.
-    """
     pre_filter_count = 0
     for domains in domains.values():
         pre_filter_count += len(domains)
@@ -457,42 +427,6 @@ def copy_unique_screenshots():
     log.close()
 
 
-"""
-To create a site object:
-fields(name, host)
-
-Given a parsed response in the form of fields(url):
-  - Split up the URL by it's root and subdomain, as well as TLD
-  - Use the root domain for base name, and use subdomain with replaced period delimiter as hyphen (ex. status.romansorin.com becomes name=status-romansorin)
-  - Figure out an efficient way to sort and search the root domains
-  - If root domain is equal to another root domain, flag it; eventually compare the screenshot of two sites; if they are below some threshold of similarity (such as 10) then only use the response that is ranked higher
-  - set url = host
-  
-  
-  Comparison is only necessary when a key in the delimited list has a count of two or more
-"""
-
-"""
-Screenshot
-
-- Go to failed and exceeded jobs; take manual shots if necessary
-
-Then run RGB->greyscale conversion
-Then run image similarity algorithm
-^^ Processing checks
-"""
-
-"""
-For screenshots:
-: foreach sites as site :
-  - Navigate to site.host
-  - Take screenshot (fullpage)
-  - Convert to greyscale rgb
-  - Make any comparisons as necessary
-"""
-
-# Next step: Parse unique domains log, foreach domain copy greyscale image (do a join) to cluster_data folder
-# Also import clustering
 
 if __name__ == "__main__":
-    copy_unique_screenshots()
+    pass

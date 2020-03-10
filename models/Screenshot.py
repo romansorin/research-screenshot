@@ -12,6 +12,7 @@ def to_greyscale(filepath, name):
     cv2.imwrite(path, grey)
     return path
 
+
 class ScreenshotEnum(enum.Enum):
     RGB = "RGB"
     GREYSCALE = "GREYSCALE"
