@@ -1,13 +1,14 @@
+from __future__ import print_function
 import datetime
 import json
 import os
 from shutil import copyfile
-
+import numpy as np
 import cv2
 import requests
 from tld import get_tld
 
-from config.app import STORAGE_LOGS_PATH, QUERY_START_PATH, CLUSTER_DATA_PATH
+from config.app import STORAGE_LOGS_PATH, QUERY_START_PATH, CLUSTER_DATA_PATH, CLUSTER_OUTPUT_PATH
 from config.aws import HEADERS
 from config.openai import IMAGE_SIMILARITY_API_KEY, SIMILARITY_THRESHOLD
 from migrations.ParsedResponse import ParsedResponse
@@ -480,6 +481,52 @@ def copy_unique_screenshots():
     log.close()
 
 
+def overlay_images():
+    clusters = os.listdir(CLUSTER_OUTPUT_PATH)
+
+    for cluster in clusters:
+        cluster_path = f"{CLUSTER_OUTPUT_PATH}/{cluster}"
+        cluster_items = os.listdir(cluster_path)
+
+        image = cv2.cvtColor(cv2.imread(f"{cluster_path}/{cluster_items[0]}"), cv2.COLOR_BGR2GRAY)
+        for i in range(1, len(cluster_items)):
+            # compare dimensions of image_0 and image_i
+            # if dimension (y) is smaller than otehr, downscale largr image to smaller dimension
+            # call addWeighted fn on resized + other image with opacity 0.,5 for each
+            # save merged/weighted img to image_0
+
+
+            image_2 = cv2.cvtColor(cv2.imread(f"{cluster_path}/{cluster_items[i]}"), cv2.COLOR_BGR2GRAY)
+            image = cv2.addWeighted(image, 0.5, image_2, 0.5, 0)
+
+    # saved overlayed cluster and call imshow
+        cv2.imshow("output", image)
+        cv2.waitKey(0)
+
+    image_0 = cv2.cvtColor(cv2.imread(f"{CLUSTER_OUTPUT_PATH}/cluster0/360_cn.png"), cv2.COLOR_BGR2GRAY)
+    image_1 =  cv2.cvtColor(cv2.imread(f"{CLUSTER_OUTPUT_PATH}/cluster0/agoda_com.png"), cv2.COLOR_BGR2GRAY)
+    image_2 =  cv2.cvtColor(cv2.imread(f"{CLUSTER_OUTPUT_PATH}/cluster0/afip_gob_ar.png"), cv2.COLOR_BGR2GRAY)
+
+    img_0_resized = cv2.resize(image_0, (image_1.shape[1], image_1.shape[0]))
+    dst = cv2.addWeighted(image_1, 0.5, img_0_resized, 0.5, 0)
+    cv2.imshow('dst', dst)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+    print(image_0.shape)
+    print(image_1.shape)
+    print(image_2.shape)
+    # print(image_0)
+    # overlay=cv2.addWeighted(image_0, 0.5, image_1, 0.5, 0)
+    # overlay=cv2.addWeighted(overlay, 0.5, image_2, 0.5, 0)
+    # cv2.imshow("overlay", overlay)
+    # cv2.waitKey(0)
+
+
+
+
+
+
 if __name__ == "__main__":
-    pass
+    overlay_images()
     # Eventually write out full procedure here
