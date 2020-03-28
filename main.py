@@ -483,46 +483,34 @@ def copy_unique_screenshots():
 
 def overlay_images():
     clusters = os.listdir(CLUSTER_OUTPUT_PATH)
-
     for cluster in clusters:
         cluster_path = f"{CLUSTER_OUTPUT_PATH}/{cluster}"
         cluster_items = os.listdir(cluster_path)
 
         image = cv2.cvtColor(cv2.imread(f"{cluster_path}/{cluster_items[0]}"), cv2.COLOR_BGR2GRAY)
         for i in range(1, len(cluster_items)):
-            # compare dimensions of image_0 and image_i
-            # if dimension (y) is smaller than otehr, downscale largr image to smaller dimension
-            # call addWeighted fn on resized + other image with opacity 0.,5 for each
-            # save merged/weighted img to image_0
+            image_0 = image
+            image_1 = cv2.cvtColor(cv2.imread(f"{cluster_path}/{cluster_items[i]}"), cv2.COLOR_BGR2GRAY)
+
+            # 0 is width, 1 is height
+            image_0_dimensions = [image_0.shape[1], image_0.shape[0]]
+            image_1_dimensions = [image_1.shape[1], image_1.shape[0]]
+            if image_1_dimensions[0] != 1440:
+                os.remove(f"{cluster_path}/{cluster_items[i]}")
+            else:
+                if image_0_dimensions[0] != image_1_dimensions[0]:
+                    print(image_0_dimensions, image_1_dimensions)
+                    if image_0_dimensions[0] < image_1_dimensions[0]:
+                        image_1 = cv2.resize(image_1, (image_0_dimensions[0], image_0_dimensions[1]))
+                    else:
+                        image_0 = cv2.resize(image_0, (image_1_dimensions[0], image_1_dimensions[1]))
+
+                image = cv2.addWeighted(image_0, 0.5, image_1, 0.5, 0)
 
 
-            image_2 = cv2.cvtColor(cv2.imread(f"{cluster_path}/{cluster_items[i]}"), cv2.COLOR_BGR2GRAY)
-            image = cv2.addWeighted(image, 0.5, image_2, 0.5, 0)
 
-    # saved overlayed cluster and call imshow
         cv2.imshow("output", image)
         cv2.waitKey(0)
-
-    image_0 = cv2.cvtColor(cv2.imread(f"{CLUSTER_OUTPUT_PATH}/cluster0/360_cn.png"), cv2.COLOR_BGR2GRAY)
-    image_1 =  cv2.cvtColor(cv2.imread(f"{CLUSTER_OUTPUT_PATH}/cluster0/agoda_com.png"), cv2.COLOR_BGR2GRAY)
-    image_2 =  cv2.cvtColor(cv2.imread(f"{CLUSTER_OUTPUT_PATH}/cluster0/afip_gob_ar.png"), cv2.COLOR_BGR2GRAY)
-
-    img_0_resized = cv2.resize(image_0, (image_1.shape[1], image_1.shape[0]))
-    dst = cv2.addWeighted(image_1, 0.5, img_0_resized, 0.5, 0)
-    cv2.imshow('dst', dst)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
-    print(image_0.shape)
-    print(image_1.shape)
-    print(image_2.shape)
-    # print(image_0)
-    # overlay=cv2.addWeighted(image_0, 0.5, image_1, 0.5, 0)
-    # overlay=cv2.addWeighted(overlay, 0.5, image_2, 0.5, 0)
-    # cv2.imshow("overlay", overlay)
-    # cv2.waitKey(0)
-
-
 
 
 
