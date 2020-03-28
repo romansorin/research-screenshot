@@ -6,6 +6,7 @@ from shutil import copyfile
 import numpy as np
 import cv2
 import requests
+import math
 from tld import get_tld
 
 from config.app import STORAGE_LOGS_PATH, QUERY_START_PATH, CLUSTER_DATA_PATH, CLUSTER_OUTPUT_PATH
@@ -483,34 +484,58 @@ def copy_unique_screenshots():
 
 def overlay_images():
     clusters = os.listdir(CLUSTER_OUTPUT_PATH)
+    i = 0
     for cluster in clusters:
+
         cluster_path = f"{CLUSTER_OUTPUT_PATH}/{cluster}"
         cluster_items = os.listdir(cluster_path)
-
-        image = cv2.cvtColor(cv2.imread(f"{cluster_path}/{cluster_items[0]}"), cv2.COLOR_BGR2GRAY)
-        for i in range(1, len(cluster_items)):
-            image_0 = image
-            image_1 = cv2.cvtColor(cv2.imread(f"{cluster_path}/{cluster_items[i]}"), cv2.COLOR_BGR2GRAY)
-
-            # 0 is width, 1 is height
-            image_0_dimensions = [image_0.shape[1], image_0.shape[0]]
-            image_1_dimensions = [image_1.shape[1], image_1.shape[0]]
-            if image_1_dimensions[0] != 1440:
-                os.remove(f"{cluster_path}/{cluster_items[i]}")
-            else:
-                if image_0_dimensions[0] != image_1_dimensions[0]:
-                    print(image_0_dimensions, image_1_dimensions)
-                    if image_0_dimensions[0] < image_1_dimensions[0]:
-                        image_1 = cv2.resize(image_1, (image_0_dimensions[0], image_0_dimensions[1]))
-                    else:
-                        image_0 = cv2.resize(image_0, (image_1_dimensions[0], image_1_dimensions[1]))
-
-                image = cv2.addWeighted(image_0, 0.5, image_1, 0.5, 0)
+        if i == 0:
+            print(subclusters(len(cluster_items), 100))
+        i += 1
+        # overlay(cluster_path, cluster_items)
 
 
+def subclusters(cluster_items, limit):
+    clusters = []
+    count = 0
+    index = 0
+    for i in range(0,  math.ceil(cluster_items/limit)):
+        clusters.append([])
+        for j in range(index, cluster_items):
+            if count == limit:
+                count = 0
+                break
 
-        cv2.imshow("output", image)
-        cv2.waitKey(0)
+            clusters[i].append(index)
+            index += 1
+            count += 1
+    return clusters
+
+
+def overlay(cluster_path, cluster_items):
+    image = cv2.cvtColor(cv2.imread(f"{cluster_path}/{cluster_items[0]}"), cv2.COLOR_BGR2GRAY)
+    for i in range(1, len(cluster_items)):
+        image_0 = image
+        image_1 = cv2.cvtColor(cv2.imread(f"{cluster_path}/{cluster_items[i]}"), cv2.COLOR_BGR2GRAY)
+
+        # 0 is width, 1 is height
+        image_0_dimensions = [image_0.shape[1], image_0.shape[0]]
+        image_1_dimensions = [image_1.shape[1], image_1.shape[0]]
+
+        if image_1_dimensions[1] != 1440:
+            os.remove(f"{cluster_path}/{cluster_items[i]}")
+        else:
+            if image_0_dimensions[0] != image_1_dimensions[0]:
+                print(image_0_dimensions, image_1_dimensions)
+                if image_0_dimensions[0] < image_1_dimensions[0]:
+                    image_1 = cv2.resize(image_1, (image_0_dimensions[0], image_0_dimensions[1]))
+                else:
+                    image_0 = cv2.resize(image_0, (image_1_dimensions[0], image_1_dimensions[1]))
+
+            image = cv2.addWeighted(image_0, 0.5, image_1, 0.5, 0)
+
+    cv2.imshow("output", image)
+    cv2.waitKey(0)
 
 
 
