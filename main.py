@@ -486,12 +486,15 @@ def overlay_images():
     clusters = os.listdir(CLUSTER_OUTPUT_PATH)
     i = 0
     for cluster in clusters:
-
         cluster_path = f"{CLUSTER_OUTPUT_PATH}/{cluster}"
         cluster_items = os.listdir(cluster_path)
-        if i == 0:
-            print(subclusters(len(cluster_items), 100))
-        i += 1
+
+        subcluster_items = subclusters(cluster_items, 50)
+        j=0
+        for i in subcluster_items:
+            overlay(cluster_path, i, j)
+            j += 1
+
         # overlay(cluster_path, cluster_items)
 
 
@@ -499,20 +502,20 @@ def subclusters(cluster_items, limit):
     clusters = []
     count = 0
     index = 0
-    for i in range(0,  math.ceil(cluster_items/limit)):
+    for i in range(0,  math.ceil(len(cluster_items)/limit)):
         clusters.append([])
-        for j in range(index, cluster_items):
+        for j in range(index, len(cluster_items)):
             if count == limit:
                 count = 0
                 break
 
-            clusters[i].append(index)
+            clusters[i].append(cluster_items[index])
             index += 1
             count += 1
     return clusters
 
 
-def overlay(cluster_path, cluster_items):
+def overlay(cluster_path, cluster_items, subcluster_count):
     image = cv2.cvtColor(cv2.imread(f"{cluster_path}/{cluster_items[0]}"), cv2.COLOR_BGR2GRAY)
     for i in range(1, len(cluster_items)):
         image_0 = image
@@ -526,7 +529,6 @@ def overlay(cluster_path, cluster_items):
             os.remove(f"{cluster_path}/{cluster_items[i]}")
         else:
             if image_0_dimensions[0] != image_1_dimensions[0]:
-                print(image_0_dimensions, image_1_dimensions)
                 if image_0_dimensions[0] < image_1_dimensions[0]:
                     image_1 = cv2.resize(image_1, (image_0_dimensions[0], image_0_dimensions[1]))
                 else:
@@ -534,8 +536,8 @@ def overlay(cluster_path, cluster_items):
 
             image = cv2.addWeighted(image_0, 0.5, image_1, 0.5, 0)
 
-    cv2.imshow("output", image)
-    cv2.waitKey(0)
+    cv2.imwrite(f"{cluster_path}/subcluster{subcluster_count}.png", image)
+    print("Layered image finished")
 
 
 
