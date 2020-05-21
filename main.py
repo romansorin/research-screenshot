@@ -539,9 +539,45 @@ def overlay(cluster_path, cluster_items, subcluster_count):
     cv2.imwrite(f"{cluster_path}/subcluster{subcluster_count}.png", image)
     print("Layered image finished")
 
+def parse_results(results):
+    variants = [
+        {
+            'identifier': '8nqXhdl3JD8u',
+            'data': []
+        },
+        {
+            'identifier': 'hwVB0eKUehxy',
+            'data': []
+        },
+        {
+            'identifier': 'vtc5qYP2r8Ut',
+            'data': []
+        }
+    ]
 
+    for result in results:
+        for variant in variants:
+            result_variant = result['variant']
+
+            if variant['identifier'] == result_variant:
+                variant['data'].append(
+                    {
+                        'session_start': result['session_start']['seconds'],
+                        'session_end': result['session_end']['seconds'],
+                        'elapsed_time': result['session_end']['seconds'] - result['session_start']['seconds']
+                    }
+                )
+
+    return variants
+        # session_start = result['session_start']
+        # session_end = result['session_end']
+        # print(session_start, session_end, variant)
 
 
 if __name__ == "__main__":
-    overlay_images()
+    f = open('results.json', 'r')
+    results = json.loads(f.read())
+    f = open('parsed_results.json', 'x')
+    json.dump(parse_results(results), f)
+    # overlay_images()
     # Eventually write out full procedure here
