@@ -1,0 +1,9 @@
+from datetime import datetime
+
+
+def now():
+    return datetime.now()
+
+
+def time_elapsed(start, end):
+    return end - start
